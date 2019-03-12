@@ -79,17 +79,36 @@
 
 
 
-<meta name="description" content="Coder梅的开发笔记">
+<meta name="description" content="一、概念Activity是与用户交互的接口。是四大组件之一。它是一个容器，不绘制任何东西，只负责组织将要被绘制的组件。通俗地讲就是用户界面。 二、Activity写法一个Activity是一个类，该类要继承android.app.Activity。 三、Activity启动基本流程 启动一个app时，Android操作系统会读取AndroidManifest.xml文件，来确定运行哪个Activi">
 <meta name="keywords" content="程序员">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Coder梅的个人博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安卓开发笔记：Activity">
+<meta property="og:url" content="http://yoursite.com/2019/03/12/安卓开发笔记：Activity/index.html">
 <meta property="og:site_name" content="Coder梅的个人博客">
-<meta property="og:description" content="Coder梅的开发笔记">
+<meta property="og:description" content="一、概念Activity是与用户交互的接口。是四大组件之一。它是一个容器，不绘制任何东西，只负责组织将要被绘制的组件。通俗地讲就是用户界面。 二、Activity写法一个Activity是一个类，该类要继承android.app.Activity。 三、Activity启动基本流程 启动一个app时，Android操作系统会读取AndroidManifest.xml文件，来确定运行哪个Activi">
 <meta property="og:locale" content="简体中文">
+<meta property="og:image" content="http://wx1.sinaimg.cn/mw690/007x54aCly1fzhoszv6wjj30av05kaaa.jpg">
+<meta property="og:image" content="https://i.imgur.com/dahDt3n.png">
+<meta property="og:image" content="https://i.imgur.com/8xwokB5.png">
+<meta property="og:image" content="https://i.imgur.com/pNSg1jW.png">
+<meta property="og:image" content="https://i.imgur.com/Q8LK9rY.png">
+<meta property="og:image" content="https://i.imgur.com/Ee6YjLG.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190118090855961.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NvZGVybWVp,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190118091828736.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NvZGVybWVp,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190118093302438.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NvZGVybWVp,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190121142138517.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019011814310411.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NvZGVybWVp,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190118143614915.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NvZGVybWVp,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019011814401459.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NvZGVybWVp,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190118144434258.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NvZGVybWVp,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190118144727715.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NvZGVybWVp,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190118144801178.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NvZGVybWVp,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190118144831892.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NvZGVybWVp,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2019-03-12T07:54:38.198Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Coder梅的个人博客">
-<meta name="twitter:description" content="Coder梅的开发笔记">
+<meta name="twitter:title" content="安卓开发笔记：Activity">
+<meta name="twitter:description" content="一、概念Activity是与用户交互的接口。是四大组件之一。它是一个容器，不绘制任何东西，只负责组织将要被绘制的组件。通俗地讲就是用户界面。 二、Activity写法一个Activity是一个类，该类要继承android.app.Activity。 三、Activity启动基本流程 启动一个app时，Android操作系统会读取AndroidManifest.xml文件，来确定运行哪个Activi">
+<meta name="twitter:image" content="http://wx1.sinaimg.cn/mw690/007x54aCly1fzhoszv6wjj30av05kaaa.jpg">
 
 
 
@@ -119,13 +138,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/12/安卓开发笔记：Activity/">
 
 
 
 
 
-  <title>Coder梅的个人博客</title>
+  <title>安卓开发笔记：Activity | Coder梅的个人博客</title>
   
 
 
@@ -144,8 +163,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -218,9 +236,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -250,9 +268,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/12/安卓开发笔记：Activity/" itemprop="url">安卓开发笔记：Activity</a></h1>
+          <h1 class="post-title" itemprop="name headline">安卓开发笔记：Activity</h1>
         
 
         <div class="post-meta">
@@ -302,9 +318,7 @@
       
 
       
-        
-          
-            <h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>Activity是与用户交互的接口。是四大组件之一。<br>它是一个容器，不绘制任何东西，只负责组织将要被绘制的组件。<br>通俗地讲就是用户界面。</p>
+        <h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>Activity是与用户交互的接口。是四大组件之一。<br>它是一个容器，不绘制任何东西，只负责组织将要被绘制的组件。<br>通俗地讲就是用户界面。</p>
 <h2 id="二、Activity写法"><a href="#二、Activity写法" class="headerlink" title="二、Activity写法"></a>二、Activity写法</h2><p>一个Activity是一个类，该类要继承android.app.Activity。</p>
 <h2 id="三、Activity启动基本流程"><a href="#三、Activity启动基本流程" class="headerlink" title="三、Activity启动基本流程"></a>三、Activity启动基本流程</h2><ol>
 <li>启动一个app时，Android操作系统会读取AndroidManifest.xml文件，来确定运行哪个Activity。</li>
@@ -527,8 +541,6 @@
 </tbody>
 </table>
 
-          
-        
       
     </div>
     
@@ -545,299 +557,28 @@
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/12/读书进度/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Coder Mei">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Coder梅的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/12/读书进度/" itemprop="url">读书进度</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-12T14:04:30+08:00">
-                2019-03-12
-              </time>
+              <a href="/2019/03/12/读书进度/" rel="next" title="读书进度">
+                <i class="fa fa-chevron-left"></i> 读书进度
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <h1 id="coder梅：读书进度"><a href="#coder梅：读书进度" class="headerlink" title="coder梅：读书进度"></a>coder梅：读书进度</h1><h2 id="git和github"><a href="#git和github" class="headerlink" title="git和github"></a>git和github</h2><table>
-<thead>
-<tr>
-<th>书名</th>
-<th>进度</th>
-<th>总结</th>
-<th>最后阅读时间</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>尚硅谷 Git&amp;Github</td>
-<td>100% 共62节</td>
-<td>可作为字典复看，内容很精炼</td>
-<td>2019/3/11</td>
-</tr>
-</tbody>
-</table>
-<h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><table>
-<thead>
-<tr>
-<th>书名</th>
-<th>进度</th>
-<th>总结</th>
-<th>最后阅读时间</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>《大话设计模式》程杰 著</td>
-<td>第26章</td>
-<td>每章的加粗字体可复看</td>
-<td>2019/3/6</td>
-</tr>
-</tbody>
-</table>
-<h2 id="安卓书籍"><a href="#安卓书籍" class="headerlink" title="安卓书籍"></a>安卓书籍</h2><table>
-<thead>
-<tr>
-<th>书名</th>
-<th>进度</th>
-<th>总结</th>
-<th>最后阅读时间</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>《android studio实战 快速、高效地构建android应用》 Adam Gerber 著 靳晓辉 译</td>
-<td>1、2、3、4章</td>
-<td>第2、3、4章不错：讲android studio常用技巧，很实用，可复读。</td>
-<td>2019/1/24</td>
-</tr>
-<tr>
-<td>《Android编程权威指南》 Bill Phillips Chris Stewart Kristin Marsicano著 王明发 译</td>
-<td>9、10章</td>
-<td>可复读</td>
-<td>2018/4/9</td>
-</tr>
-<tr>
-<td>《Android群英传》 徐宜生 著</td>
-<td>第1、2章</td>
-<td>可复读：第1章</td>
-<td>2019/2/21</td>
-</tr>
-</tbody>
-</table>
-<h2 id="安卓视频"><a href="#安卓视频" class="headerlink" title="安卓视频"></a>安卓视频</h2><table>
-<thead>
-<tr>
-<th>书名</th>
-<th>进度</th>
-<th>总结</th>
-<th>最后阅读时间</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>geek视频</td>
-<td>3阶段：1.0-4、1.14、2.16-20、5.45、4.2-4、4.14-15、4阶段：8</td>
-<td>无需复看</td>
-<td>2019/2/15</td>
-</tr>
-<tr>
-<td>mars视频</td>
-<td>1季完、重置版1季完、第2季：1、3</td>
-<td>无需复看</td>
-<td>2019/2/20</td>
-</tr>
-<tr>
-<td>阳光沙滩Activity视频教程</td>
-<td>1-3、6-12、18-25</td>
-<td>无需复看</td>
-<td>2018/4/20</td>
-</tr>
-<tr>
-<td>育知同创视频</td>
-<td>59-66</td>
-<td>无需复看</td>
-<td>2018/4/24</td>
-</tr>
-</tbody>
-</table>
-<h2 id="产品书籍"><a href="#产品书籍" class="headerlink" title="产品书籍"></a>产品书籍</h2><table>
-<thead>
-<tr>
-<th>书名</th>
-<th>进度</th>
-<th>总结</th>
-<th>最后阅读时间</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>《人人都是产品经理》 苏杰 著</td>
-<td>42页</td>
-<td>可复读</td>
-<td>2019/3/1</td>
-</tr>
-</tbody>
-</table>
-<h2 id="人工智能视频"><a href="#人工智能视频" class="headerlink" title="人工智能视频"></a>人工智能视频</h2><table>
-<thead>
-<tr>
-<th>书名</th>
-<th>进度</th>
-<th>总结</th>
-<th>最后阅读时间</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>万门大学 你知道的人工智能 你不知道的python</td>
-<td>100% 共7节</td>
-<td>无需复看</td>
-<td>2019/2/21</td>
-</tr>
-<tr>
-<td>万门大学 深度学习和神经网络</td>
-<td>1.1-16 共9节</td>
-<td>大部分内容看不懂、但无需复看</td>
-<td>2019/2/27</td>
-</tr>
-<tr>
-<td>万门大学 让神经网络听懂故事</td>
-<td>1.1-5 共11节</td>
-<td>-</td>
-<td>2019/3/6</td>
-</tr>
-</tbody>
-</table>
-<h2 id="系统分析师"><a href="#系统分析师" class="headerlink" title="系统分析师"></a>系统分析师</h2><table>
-<thead>
-<tr>
-<th>书名</th>
-<th>进度</th>
-<th>总结</th>
-<th>最后阅读时间</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>希赛 系统分析师</td>
-<td>1-2 共10节</td>
-<td>-</td>
-<td>2019/3/7</td>
-</tr>
-</tbody>
-</table>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -847,138 +588,11 @@
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/12/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Coder Mei">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Coder梅的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/12/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-12T08:25:17+08:00">
-                2019-03-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
+    <div class="post-spread">
       
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
 
 
           </div>
@@ -986,6 +600,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -1006,8 +624,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -1049,6 +676,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、概念"><span class="nav-number">1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、Activity写法"><span class="nav-number">2.</span> <span class="nav-text">二、Activity写法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、Activity启动基本流程"><span class="nav-number">3.</span> <span class="nav-text">三、Activity启动基本流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、Activity三种状态"><span class="nav-number">4.</span> <span class="nav-text">四、Activity三种状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、Activity生命周期"><span class="nav-number">5.</span> <span class="nav-text">五、Activity生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#正常情况的生命周期（1到6）"><span class="nav-number">5.1.</span> <span class="nav-text">正常情况的生命周期（1到6）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#过程1（onCreate-、onStart-、onResume-）"><span class="nav-number">5.1.1.</span> <span class="nav-text">过程1（onCreate()、onStart()、onResume()）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#过程2（onPause-）"><span class="nav-number">5.1.2.</span> <span class="nav-text">过程2（onPause()）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#过程3（onStop-）"><span class="nav-number">5.1.3.</span> <span class="nav-text">过程3（onStop()）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#过程4（onDestroy-）"><span class="nav-number">5.1.4.</span> <span class="nav-text">过程4（onDestroy()）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#过程5（onResume-）"><span class="nav-number">5.1.5.</span> <span class="nav-text">过程5（onResume()）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#过程6（onRestart-、onStart-）"><span class="nav-number">5.1.6.</span> <span class="nav-text">过程6（onRestart()、onStart()）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#小结"><span class="nav-number">5.1.7.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异常情况的生命周期（7、8）"><span class="nav-number">5.2.</span> <span class="nav-text">异常情况的生命周期（7、8）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、启动Activity"><span class="nav-number">6.</span> <span class="nav-text">六、启动Activity</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#七、任务栈（back-stack）"><span class="nav-number">7.</span> <span class="nav-text">七、任务栈（back stack）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#八、启动模式"><span class="nav-number">8.</span> <span class="nav-text">八、启动模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方式一（静态）"><span class="nav-number">8.1.</span> <span class="nav-text">方式一（静态）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#standard例"><span class="nav-number">8.1.1.</span> <span class="nav-text">standard例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#singleTop例"><span class="nav-number">8.1.2.</span> <span class="nav-text">singleTop例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#singleTask例"><span class="nav-number">8.1.3.</span> <span class="nav-text">singleTask例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#singleInstance例"><span class="nav-number">8.1.4.</span> <span class="nav-text">singleInstance例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方式二（动态）"><span class="nav-number">8.2.</span> <span class="nav-text">方式二（动态）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#九、Activity传递数据"><span class="nav-number">9.</span> <span class="nav-text">九、Activity传递数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#十、AndroidManifest-xml里配置Activity"><span class="nav-number">10.</span> <span class="nav-text">十、AndroidManifest.xml里配置Activity</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#十一、几个Activity的方法说明"><span class="nav-number">11.</span> <span class="nav-text">十一、几个Activity的方法说明</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1182,6 +825,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
