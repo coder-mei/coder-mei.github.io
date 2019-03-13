@@ -99,7 +99,7 @@
     root: '/',
     scheme: 'Mist',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -293,6 +293,326 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/13/安卓开发笔记：Fragment/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder梅">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder梅的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/13/安卓开发笔记：Fragment/" itemprop="url">安卓开发笔记：Fragment</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-13T13:32:31+08:00">
+                2019-03-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/安卓/" itemprop="url" rel="index">
+                    <span itemprop="name">安卓</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>什么是Fragment？</p>
+<ul>
+<li>中文翻译叫“碎片”。</li>
+<li>Android3.0中引入了Fragment，其目的是在大屏设备上提供更好的用户体验。</li>
+<li>我们可以把Fragment想成Activity中的模块，这个模块有自己的布局，有自己的生命周期。</li>
+<li>在Activity运行的时候，可以加载或移除Fragment。<br><img src="https://img-blog.csdnimg.cn/20190121143913584.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NvZGVybWVp,size_16,color_FFFFFF,t_70" alt="Fragment示例图"></li>
+<li>和Activity的关系<br>Fragment不能脱离Activity。<br>一个Activity可以包含多个Fragment。<br>一个Fragment也可以被多个Activity使用。</li>
+</ul>
+<h2 id="二、Fragment写法"><a href="#二、Fragment写法" class="headerlink" title="二、Fragment写法"></a>二、Fragment写法</h2><p>一个Fragment也是一个类，该类要继承android.app.Fragment。<br>Fragment类中重写onCreateView方法，该方法中加载Fragment的布局文件(.xml)。</p>
+<h2 id="三、Activity中添加Fragment"><a href="#三、Activity中添加Fragment" class="headerlink" title="三、Activity中添加Fragment"></a>三、Activity中添加Fragment</h2><h3 id="静态添加"><a href="#静态添加" class="headerlink" title="静态添加"></a>静态添加</h3><p>是把Fragment作为一个控件，添加到布局文件中。<br>Activity布局文件中添加<fragment>标签,关联Fragment类。</fragment></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:orientation</span>=<span class="string">"horizontal"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!--添加两个Fragment--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">fragment</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/left_fragment"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"0dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">class</span>=<span class="string">"com.example.coder_mei.fragmentdemo.LeftFragment"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_weight</span>=<span class="string">"1"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">fragment</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/right_fragment"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"0dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">class</span>=<span class="string">"com.example.coder_mei.fragmentdemo.RightFragment"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_weight</span>=<span class="string">"2"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="动态添加"><a href="#动态添加" class="headerlink" title="动态添加"></a>动态添加</h3><p>通过java代码添加到Activity中。<br>步骤：</p>
+<ol>
+<li>Activity布局文件中添加<framelayout>标签（其他布局标签也可以，推荐使用<framelayout>）。</framelayout></framelayout></li>
+<li>在Activity中onCreate方法中关联Fragment。</li>
+</ol>
+<p>xml代码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:orientation</span>=<span class="string">"horizontal"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--添加两个Fragment--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">FrameLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/left_frame_layout"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"0dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_weight</span>=<span class="string">"1"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">FrameLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/right_frame_layout"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"0dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_weight</span>=<span class="string">"2"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>java代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(@Nullable Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_second);</span><br><span class="line"></span><br><span class="line"><span class="comment">//      FragmentManager是Activity与Fragment之间进行交互的接口。</span></span><br><span class="line">        FragmentManager fragmentManager = getFragmentManager();</span><br><span class="line">        FragmentTransaction transaction = fragmentManager.beginTransaction();</span><br><span class="line"></span><br><span class="line">        LeftFragment leftFragment = <span class="keyword">new</span> LeftFragment();</span><br><span class="line">        transaction.add(R.id.left_frame_layout, leftFragment);</span><br><span class="line"></span><br><span class="line">        RightFragment rightFragment = <span class="keyword">new</span> RightFragment();</span><br><span class="line">        transaction.add(R.id.right_frame_layout, rightFragment);</span><br><span class="line"></span><br><span class="line">        transaction.commit();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="四、Fragment三种状态"><a href="#四、Fragment三种状态" class="headerlink" title="四、Fragment三种状态"></a>四、Fragment三种状态</h2><table>
+<thead>
+<tr>
+<th>状态</th>
+<th>概念 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>运行状态(Active/Running)</td>
+<td>Fragment处于可见、且与它关联的Activity处于运行状态。</td>
+</tr>
+<tr>
+<td>暂停状态(Paused)</td>
+<td>Activity处于暂停状态时、与它相关联的可见Fragment会进入暂停状态。</td>
+</tr>
+<tr>
+<td>停止状态(Stopped)</td>
+<td>Activity处于停止状态时、与它相关联的Fragment会进入停止状态。或者调用remove()、replace()方法将碎片从活动中移除、且调用addToBackStack()。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="五、Fragment生命周期"><a href="#五、Fragment生命周期" class="headerlink" title="五、Fragment生命周期"></a>五、Fragment生命周期</h2><p>每个Fragment都有自己的生命周期，虽然Fragment有自己的生命周期，但因为Fragment必须嵌入到Activity中使用，因此Fragment的生命周期受Activity的生命周期所控制。</p>
+<ul>
+<li>当Activity暂停时，该Activity内的所有Fragment都暂停。</li>
+<li>当Activity被销毁时，该Activity内的所有Fragment都会被销毁。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>十一个生命周期方法</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>onAttach()</td>
+<td>挂载，将Fragment挂载到Activity中。</td>
+</tr>
+<tr>
+<td>onCreate()</td>
+<td>创建Fragment。</td>
+</tr>
+<tr>
+<td>onCreateView()</td>
+<td>创建视图，主要用于创建Fragment自身的UI，返回值是自身UI对应的View。</td>
+</tr>
+<tr>
+<td>onActivityCreated()</td>
+<td>当Activity的onCreate方法执行完毕后，告诉Fragment自己创建完毕。此时，Fragment就用onActivityCreated用来接收Activity传递过来的信息</td>
+</tr>
+<tr>
+<td>onStart()</td>
+<td>让Fragment可见。</td>
+</tr>
+<tr>
+<td>onResume()</td>
+<td>让Fragment可交互。</td>
+</tr>
+<tr>
+<td>onPause()</td>
+<td>让Fragment不可交互。</td>
+</tr>
+<tr>
+<td>onStop()</td>
+<td>让Fragment不可见。</td>
+</tr>
+<tr>
+<td>onDestroyView()</td>
+<td>销毁视图。</td>
+</tr>
+<tr>
+<td>onDestroy()</td>
+<td>销毁Fragment。</td>
+</tr>
+<tr>
+<td>onDetach()</td>
+<td>解除挂载，Activity要销毁了，就要从Activity中移除Fragment。</td>
+</tr>
+</tbody>
+</table>
+<p><img src="https://img-blog.csdnimg.cn/20190121153605293.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NvZGVybWVp,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20190121150744664.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NvZGVybWVp,size_16,color_FFFFFF,t_70" alt="fragment生命周期一"></p>
+<h4 id="过程1、2"><a href="#过程1、2" class="headerlink" title="过程1、2"></a>过程1、2</h4><p>过程1、2是一个Fragment的创建与销毁的过程，与Activity的创建销毁相似（参照上一篇微博 <a href="https://blog.csdn.net/codermei/article/details/86526842" target="_blank" rel="noopener">安卓开发学习笔记：Activity</a>）。<br>差异在于，Fragment要比Activity少一个Restart生命周期方法。<br>多出五个生命周期方法，分别是：</p>
+<ul>
+<li>onAttach、onDettach挂载和解除挂载。</li>
+<li>onCreateView、onDestroyView创建和销毁视图。</li>
+<li>onActivityCreated确保与Fragment相关联的Activity已经创建完毕。</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20190121153511998.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NvZGVybWVp,size_16,color_FFFFFF,t_70" alt="Fragment生命周期二"></p>
+<h4 id="过程3"><a href="#过程3" class="headerlink" title="过程3"></a>过程3</h4><p>（前提：First Fragment被放入回退栈中，即代码中调用addToBackStack()方法。）<br>点击replace second fragment按钮，打开Second Fragment，此时会调用First Fragment的onPause、onStop、onDestroyView生命周期方法。<br>再点击回退按钮，会调用First Fragment里的onCreateView、onActivityCreated、onStart、onResume方法。</p>
+<h4 id="旋转屏幕，Fragment的生命周期方法为什么会被重复调用？"><a href="#旋转屏幕，Fragment的生命周期方法为什么会被重复调用？" class="headerlink" title="旋转屏幕，Fragment的生命周期方法为什么会被重复调用？"></a>旋转屏幕，Fragment的生命周期方法为什么会被重复调用？</h4><ul>
+<li>当我们旋转屏幕时，Activity会被销毁并重新创建，并且在销毁之前执行onSaveInstanceState方法。<br>这个方法会保存Activity的一些信息，其中就包括添加过的Fragment，<br>当Activity被重新创建时，会初始化其中的变量。<br>在Activity中的onCreate方法中有创建Fragment的过程，所以执行onCreate时也会重新创建一个Fragment。<br>导致重叠。</li>
+<li>解决方案一：不让Activity保存信息。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onSaveInstanceState</span><span class="params">(Bundle outState)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        super.onSaveInstanceState(outState);    </span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>解决方案二：不让Activity走生命周期方法。</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:configChanges="keyboardHidden|screenSize|orientation"</span><br></pre></td></tr></table></figure>
+<ul>
+<li>解决方案三：在onCreate中判断Bundle数据是否为空，为空则创建Fragment，不为空则不创建。</li>
+</ul>
+<h2 id="六、传递数据"><a href="#六、传递数据" class="headerlink" title="六、传递数据"></a>六、传递数据</h2><p>Activity传递数据给Fragment:</p>
+<ol>
+<li>使用Bundle、setArguments传递数据。<br>Activity里创建要传递的数据</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建bundle，将要传递的键值对儿绑定到bundle里。</span></span><br><span class="line">Bundle bundle = <span class="keyword">new</span> Bundle();</span><br><span class="line">bundle.putString(<span class="string">"key"</span>, passValue);</span><br><span class="line"></span><br><span class="line">DemoFragment fragment = <span class="keyword">new</span> DemoFragment();</span><br><span class="line"><span class="comment">//将bundle通过setArguments方法绑定到Fragment里。</span></span><br><span class="line">fragment.setArguments(bundle);</span><br><span class="line"></span><br><span class="line">transaction.add(R.id.fragment_frame_layout, fragment);</span><br><span class="line">transaction.commit();</span><br></pre></td></tr></table></figure>
+<p>Fragment里接收数据</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过getArguments获取bundle。</span></span><br><span class="line">Bundle bundle = getArguments();</span><br><span class="line">String receiveValue = bundle.getString(<span class="string">"key"</span>);</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>获取已创建的Fragment对象，直接传递。<br>Activity里</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在frame layout与Fragment类关联时，创建一个Tag，Tag是Fragment的唯一标识。</span></span><br><span class="line">transaction.add(R.id.second_fragment_frame_layout, secondFragment, <span class="string">"SECOND_FRAGMENT"</span>);</span><br></pre></td></tr></table></figure>
+<p>Fragment里</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过Tag找到Fragment，还可以使用findFragmentById</span></span><br><span class="line">SecondFragment secondFragment = (SecondFragment) fragmentManager.findFragmentByTag(<span class="string">"SECOND_FRAGMENT"</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="七、Fragment常用的方法"><a href="#七、Fragment常用的方法" class="headerlink" title="七、Fragment常用的方法"></a>七、Fragment常用的方法</h2><p>android.app.Fragment：主要用于定义Fragment<br>android.app.FragmentManager：主要用于在Activity中操作Fragment<br>android.app.FragmentTransaction：保证一些列Fragment操作的原子性</p>
+<table>
+<thead>
+<tr>
+<th>常用方法</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>getFragmentManager()</td>
+<td>获取FragmentManager</td>
+</tr>
+<tr>
+<td>transaction.add()</td>
+<td>向Activity中添加一个Fragment</td>
+</tr>
+<tr>
+<td>transaction.remove()</td>
+<td>从Activity中移除一个Fragment，如果被移除的Fragment没有添加到回退栈，则这个Fragment实例将会被消除</td>
+</tr>
+<tr>
+<td>transaction.replace()</td>
+<td>替换成另一个Fragment</td>
+</tr>
+<tr>
+<td>transaction.hide()</td>
+<td>隐藏当前Fragment，仅仅是设为不可见，并不会销毁。使用场景：如果不希望视图被重绘，则使用hide和show。</td>
+</tr>
+<tr>
+<td>transaction.show()</td>
+<td>显示之前隐藏的Fragment</td>
+</tr>
+<tr>
+<td>transaction.commit()</td>
+<td>提交一个事务</td>
+</tr>
+<tr>
+<td>transaction.addToBackStack()</td>
+<td>添加一个Fragment事务到回退栈</td>
+</tr>
+</tbody>
+</table>
+<h2 id="八、Fragment其他作用"><a href="#八、Fragment其他作用" class="headerlink" title="八、Fragment其他作用"></a>八、Fragment其他作用</h2><p>作为数据恢复用：<br>Activity旋转时，如果是少量数据，可以使用onSaveInstanceState和onRestorInstanceState。<br>如果是大量数据，可以使用没有布局的Fragment保持需要恢复的对象。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/12/安卓开发笔记：Activity/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -334,6 +654,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/安卓/" itemprop="url" rel="index">
+                    <span itemprop="name">安卓</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -675,6 +1017,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/计划/" itemprop="url" rel="index">
+                    <span itemprop="name">计划</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -1084,20 +1448,54 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
 
             
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
             
 
           </nav>
 
           
 
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/coder-mei" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:codermei@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
           
 
           
@@ -1190,6 +1588,8 @@
   
 
 
+  
+
 
 
 
@@ -1228,6 +1628,11 @@
   
   
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
   
 
 
