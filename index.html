@@ -201,22 +201,12 @@
         </li>
       
         
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
-            About
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-            
-            Tags
+            Archives
           </a>
         </li>
       
@@ -231,12 +221,12 @@
         </li>
       
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
-            Archives
+            Tags
           </a>
         </li>
       
@@ -251,12 +241,12 @@
         </li>
       
         
-        <li class="menu-item menu-item-sitemap">
-          <a href="/sitemap.xml" rel="section">
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
-            Sitemap
+            About
           </a>
         </li>
       
@@ -418,187 +408,20 @@
       
         
           
-            <h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>什么是Fragment？</p>
-<ul>
-<li>中文翻译叫“碎片”。</li>
-<li>Android3.0中引入了Fragment，其目的是在大屏设备上提供更好的用户体验。</li>
-<li>我们可以把Fragment想成Activity中的模块，这个模块有自己的布局，有自己的生命周期。</li>
-<li>在Activity运行的时候，可以加载或移除Fragment。<br><img src="https://img-blog.csdnimg.cn/20190121143913584.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NvZGVybWVp,size_16,color_FFFFFF,t_70" alt="Fragment示例图"></li>
-<li>和Activity的关系<br>Fragment不能脱离Activity。<br>一个Activity可以包含多个Fragment。<br>一个Fragment也可以被多个Activity使用。</li>
-</ul>
-<h2 id="二、Fragment写法"><a href="#二、Fragment写法" class="headerlink" title="二、Fragment写法"></a>二、Fragment写法</h2><p>一个Fragment也是一个类，该类要继承android.app.Fragment。<br>Fragment类中重写onCreateView方法，该方法中加载Fragment的布局文件(.xml)。</p>
-<h2 id="三、Activity中添加Fragment"><a href="#三、Activity中添加Fragment" class="headerlink" title="三、Activity中添加Fragment"></a>三、Activity中添加Fragment</h2><h3 id="静态添加"><a href="#静态添加" class="headerlink" title="静态添加"></a>静态添加</h3><p>是把Fragment作为一个控件，添加到布局文件中。<br>Activity布局文件中添加<fragment>标签,关联Fragment类。</fragment></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:orientation</span>=<span class="string">"horizontal"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!--添加两个Fragment--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">fragment</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/left_fragment"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"0dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">class</span>=<span class="string">"com.example.coder_mei.fragmentdemo.LeftFragment"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_weight</span>=<span class="string">"1"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">fragment</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/right_fragment"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"0dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">class</span>=<span class="string">"com.example.coder_mei.fragmentdemo.RightFragment"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_weight</span>=<span class="string">"2"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="动态添加"><a href="#动态添加" class="headerlink" title="动态添加"></a>动态添加</h3><p>通过java代码添加到Activity中。<br>步骤：</p>
-<ol>
-<li>Activity布局文件中添加<framelayout>标签（其他布局标签也可以，推荐使用<framelayout>）。</framelayout></framelayout></li>
-<li>在Activity中onCreate方法中关联Fragment。</li>
-</ol>
-<p>xml代码</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:orientation</span>=<span class="string">"horizontal"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--添加两个Fragment--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">FrameLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/left_frame_layout"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"0dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_weight</span>=<span class="string">"1"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">FrameLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/right_frame_layout"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"0dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_weight</span>=<span class="string">"2"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>java代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(@Nullable Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_second);</span><br><span class="line"></span><br><span class="line"><span class="comment">//      FragmentManager是Activity与Fragment之间进行交互的接口。</span></span><br><span class="line">        FragmentManager fragmentManager = getFragmentManager();</span><br><span class="line">        FragmentTransaction transaction = fragmentManager.beginTransaction();</span><br><span class="line"></span><br><span class="line">        LeftFragment leftFragment = <span class="keyword">new</span> LeftFragment();</span><br><span class="line">        transaction.add(R.id.left_frame_layout, leftFragment);</span><br><span class="line"></span><br><span class="line">        RightFragment rightFragment = <span class="keyword">new</span> RightFragment();</span><br><span class="line">        transaction.add(R.id.right_frame_layout, rightFragment);</span><br><span class="line"></span><br><span class="line">        transaction.commit();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="四、Fragment三种状态"><a href="#四、Fragment三种状态" class="headerlink" title="四、Fragment三种状态"></a>四、Fragment三种状态</h2><table>
-<thead>
-<tr>
-<th>状态</th>
-<th>概念 </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>运行状态(Active/Running)</td>
-<td>Fragment处于可见、且与它关联的Activity处于运行状态。</td>
-</tr>
-<tr>
-<td>暂停状态(Paused)</td>
-<td>Activity处于暂停状态时、与它相关联的可见Fragment会进入暂停状态。</td>
-</tr>
-<tr>
-<td>停止状态(Stopped)</td>
-<td>Activity处于停止状态时、与它相关联的Fragment会进入停止状态。或者调用remove()、replace()方法将碎片从活动中移除、且调用addToBackStack()。</td>
-</tr>
-</tbody>
-</table>
-<h2 id="五、Fragment生命周期"><a href="#五、Fragment生命周期" class="headerlink" title="五、Fragment生命周期"></a>五、Fragment生命周期</h2><p>每个Fragment都有自己的生命周期，虽然Fragment有自己的生命周期，但因为Fragment必须嵌入到Activity中使用，因此Fragment的生命周期受Activity的生命周期所控制。</p>
-<ul>
-<li>当Activity暂停时，该Activity内的所有Fragment都暂停。</li>
-<li>当Activity被销毁时，该Activity内的所有Fragment都会被销毁。</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>十一个生命周期方法</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>onAttach()</td>
-<td>挂载，将Fragment挂载到Activity中。</td>
-</tr>
-<tr>
-<td>onCreate()</td>
-<td>创建Fragment。</td>
-</tr>
-<tr>
-<td>onCreateView()</td>
-<td>创建视图，主要用于创建Fragment自身的UI，返回值是自身UI对应的View。</td>
-</tr>
-<tr>
-<td>onActivityCreated()</td>
-<td>当Activity的onCreate方法执行完毕后，告诉Fragment自己创建完毕。此时，Fragment就用onActivityCreated用来接收Activity传递过来的信息</td>
-</tr>
-<tr>
-<td>onStart()</td>
-<td>让Fragment可见。</td>
-</tr>
-<tr>
-<td>onResume()</td>
-<td>让Fragment可交互。</td>
-</tr>
-<tr>
-<td>onPause()</td>
-<td>让Fragment不可交互。</td>
-</tr>
-<tr>
-<td>onStop()</td>
-<td>让Fragment不可见。</td>
-</tr>
-<tr>
-<td>onDestroyView()</td>
-<td>销毁视图。</td>
-</tr>
-<tr>
-<td>onDestroy()</td>
-<td>销毁Fragment。</td>
-</tr>
-<tr>
-<td>onDetach()</td>
-<td>解除挂载，Activity要销毁了，就要从Activity中移除Fragment。</td>
-</tr>
-</tbody>
-</table>
-<p><img src="https://img-blog.csdnimg.cn/20190121153605293.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NvZGVybWVp,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20190121150744664.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NvZGVybWVp,size_16,color_FFFFFF,t_70" alt="fragment生命周期一"></p>
-<h4 id="过程1、2"><a href="#过程1、2" class="headerlink" title="过程1、2"></a>过程1、2</h4><p>过程1、2是一个Fragment的创建与销毁的过程，与Activity的创建销毁相似（参照上一篇微博 <a href="https://blog.csdn.net/codermei/article/details/86526842" target="_blank" rel="noopener">安卓开发学习笔记：Activity</a>）。<br>差异在于，Fragment要比Activity少一个Restart生命周期方法。<br>多出五个生命周期方法，分别是：</p>
-<ul>
-<li>onAttach、onDettach挂载和解除挂载。</li>
-<li>onCreateView、onDestroyView创建和销毁视图。</li>
-<li>onActivityCreated确保与Fragment相关联的Activity已经创建完毕。</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20190121153511998.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NvZGVybWVp,size_16,color_FFFFFF,t_70" alt="Fragment生命周期二"></p>
-<h4 id="过程3"><a href="#过程3" class="headerlink" title="过程3"></a>过程3</h4><p>（前提：First Fragment被放入回退栈中，即代码中调用addToBackStack()方法。）<br>点击replace second fragment按钮，打开Second Fragment，此时会调用First Fragment的onPause、onStop、onDestroyView生命周期方法。<br>再点击回退按钮，会调用First Fragment里的onCreateView、onActivityCreated、onStart、onResume方法。</p>
-<h4 id="旋转屏幕，Fragment的生命周期方法为什么会被重复调用？"><a href="#旋转屏幕，Fragment的生命周期方法为什么会被重复调用？" class="headerlink" title="旋转屏幕，Fragment的生命周期方法为什么会被重复调用？"></a>旋转屏幕，Fragment的生命周期方法为什么会被重复调用？</h4><ul>
-<li>当我们旋转屏幕时，Activity会被销毁并重新创建，并且在销毁之前执行onSaveInstanceState方法。<br>这个方法会保存Activity的一些信息，其中就包括添加过的Fragment，<br>当Activity被重新创建时，会初始化其中的变量。<br>在Activity中的onCreate方法中有创建Fragment的过程，所以执行onCreate时也会重新创建一个Fragment。<br>导致重叠。</li>
-<li>解决方案一：不让Activity保存信息。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onSaveInstanceState</span><span class="params">(Bundle outState)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        super.onSaveInstanceState(outState);    </span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>解决方案二：不让Activity走生命周期方法。</li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:configChanges="keyboardHidden|screenSize|orientation"</span><br></pre></td></tr></table></figure>
-<ul>
-<li>解决方案三：在onCreate中判断Bundle数据是否为空，为空则创建Fragment，不为空则不创建。</li>
-</ul>
-<h2 id="六、传递数据"><a href="#六、传递数据" class="headerlink" title="六、传递数据"></a>六、传递数据</h2><p>Activity传递数据给Fragment:</p>
-<ol>
-<li>使用Bundle、setArguments传递数据。<br>Activity里创建要传递的数据</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建bundle，将要传递的键值对儿绑定到bundle里。</span></span><br><span class="line">Bundle bundle = <span class="keyword">new</span> Bundle();</span><br><span class="line">bundle.putString(<span class="string">"key"</span>, passValue);</span><br><span class="line"></span><br><span class="line">DemoFragment fragment = <span class="keyword">new</span> DemoFragment();</span><br><span class="line"><span class="comment">//将bundle通过setArguments方法绑定到Fragment里。</span></span><br><span class="line">fragment.setArguments(bundle);</span><br><span class="line"></span><br><span class="line">transaction.add(R.id.fragment_frame_layout, fragment);</span><br><span class="line">transaction.commit();</span><br></pre></td></tr></table></figure>
-<p>Fragment里接收数据</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过getArguments获取bundle。</span></span><br><span class="line">Bundle bundle = getArguments();</span><br><span class="line">String receiveValue = bundle.getString(<span class="string">"key"</span>);</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>获取已创建的Fragment对象，直接传递。<br>Activity里</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在frame layout与Fragment类关联时，创建一个Tag，Tag是Fragment的唯一标识。</span></span><br><span class="line">transaction.add(R.id.second_fragment_frame_layout, secondFragment, <span class="string">"SECOND_FRAGMENT"</span>);</span><br></pre></td></tr></table></figure>
-<p>Fragment里</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过Tag找到Fragment，还可以使用findFragmentById</span></span><br><span class="line">SecondFragment secondFragment = (SecondFragment) fragmentManager.findFragmentByTag(<span class="string">"SECOND_FRAGMENT"</span>);</span><br></pre></td></tr></table></figure>
-<h2 id="七、Fragment常用的方法"><a href="#七、Fragment常用的方法" class="headerlink" title="七、Fragment常用的方法"></a>七、Fragment常用的方法</h2><p>android.app.Fragment：主要用于定义Fragment<br>android.app.FragmentManager：主要用于在Activity中操作Fragment<br>android.app.FragmentTransaction：保证一些列Fragment操作的原子性</p>
-<table>
-<thead>
-<tr>
-<th>常用方法</th>
-<th>用法</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>getFragmentManager()</td>
-<td>获取FragmentManager</td>
-</tr>
-<tr>
-<td>transaction.add()</td>
-<td>向Activity中添加一个Fragment</td>
-</tr>
-<tr>
-<td>transaction.remove()</td>
-<td>从Activity中移除一个Fragment，如果被移除的Fragment没有添加到回退栈，则这个Fragment实例将会被消除</td>
-</tr>
-<tr>
-<td>transaction.replace()</td>
-<td>替换成另一个Fragment</td>
-</tr>
-<tr>
-<td>transaction.hide()</td>
-<td>隐藏当前Fragment，仅仅是设为不可见，并不会销毁。使用场景：如果不希望视图被重绘，则使用hide和show。</td>
-</tr>
-<tr>
-<td>transaction.show()</td>
-<td>显示之前隐藏的Fragment</td>
-</tr>
-<tr>
-<td>transaction.commit()</td>
-<td>提交一个事务</td>
-</tr>
-<tr>
-<td>transaction.addToBackStack()</td>
-<td>添加一个Fragment事务到回退栈</td>
-</tr>
-</tbody>
-</table>
-<h2 id="八、Fragment其他作用"><a href="#八、Fragment其他作用" class="headerlink" title="八、Fragment其他作用"></a>八、Fragment其他作用</h2><p>作为数据恢复用：<br>Activity旋转时，如果是少量数据，可以使用onSaveInstanceState和onRestorInstanceState。<br>如果是大量数据，可以使用没有布局的Fragment保持需要恢复的对象。</p>
+          一、概念什么是Fragment？
 
-          
+中文翻译叫“碎片”。
+Android3.0中引入了Fragment，其目的是在大屏设备上提供更好的用户体验。
+我们可以把Fragment想成Activity中的模块，这个模块有自己的布局，有自己的生命周期。
+在Activity运行的时候，可以加载或移除Fragme
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/13/安卓开发笔记：Fragment/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -738,230 +561,18 @@
       
         
           
-            <h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>Activity是与用户交互的接口。是四大组件之一。<br>它是一个容器，不绘制任何东西，只负责组织将要被绘制的组件。<br>通俗地讲就是用户界面。</p>
-<h2 id="二、Activity写法"><a href="#二、Activity写法" class="headerlink" title="二、Activity写法"></a>二、Activity写法</h2><p>一个Activity是一个类，该类要继承android.app.Activity。</p>
-<h2 id="三、Activity启动基本流程"><a href="#三、Activity启动基本流程" class="headerlink" title="三、Activity启动基本流程"></a>三、Activity启动基本流程</h2><ol>
-<li>启动一个app时，Android操作系统会读取AndroidManifest.xml文件，来确定运行哪个Activity。</li>
-<li>找到Activity后会生成Activity，然后调用该Activity的onCreate()方法。</li>
-<li>在onCreate()方法中读取布局文件（setContentView(R.layout.布局文件名);<br>），来确定显示什么样的内容。</li>
-</ol>
-<p><img src="http://wx1.sinaimg.cn/mw690/007x54aCly1fzhoszv6wjj30av05kaaa.jpg" alt="Activity启动基本流程"></p>
-<h2 id="四、Activity三种状态"><a href="#四、Activity三种状态" class="headerlink" title="四、Activity三种状态"></a>四、Activity三种状态</h2><table>
-<thead>
-<tr>
-<th>状态</th>
-<th>概念</th>
-<th>例子</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>运行状态(Active/Running)</td>
-<td>Activity处于可见、且可与之交互的状态。</td>
-<td>Activity被启动。</td>
-</tr>
-<tr>
-<td>暂停状态(Paused)</td>
-<td>Activity处于半透明、且不能与之交互的状态。</td>
-<td>Activity里弹出了一个dialog，此Activity显示在dialog后面以半透明的形式存在。</td>
-</tr>
-<tr>
-<td>停止状态(Stopped)</td>
-<td>一个Activity被另一个Activity完全覆盖。</td>
-<td>Activity启动另一个Activity，此Activity被另一个Activity完全遮住。</td>
-</tr>
-</tbody>
-</table>
-<h2 id="五、Activity生命周期"><a href="#五、Activity生命周期" class="headerlink" title="五、Activity生命周期"></a>五、Activity生命周期</h2><table>
-<thead>
-<tr>
-<th>七个生命周期方法</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>onCreate()</td>
-<td>表示Activity正在被创建，这是生命周期中的第一个方法。这个方法中可以做一些初始化的工作。如调用setContentView去加载界面布局资源，初始化Activity所需数据等。</td>
-</tr>
-<tr>
-<td>onStart()</td>
-<td>表示Activity正在被启动，这时Activity已经可见了，但还未出现在前台，无法与之交互。</td>
-</tr>
-<tr>
-<td>onResume()</td>
-<td>表示Activity已经可见了，并且出现在前台并可与之交互。</td>
-</tr>
-<tr>
-<td>onPause()</td>
-<td>表示Activity正在停止，可以做一些存储数据，停止动画等工作。</td>
-</tr>
-<tr>
-<td>onStop()</td>
-<td>表示Activity即将停止，可以做一些稍微重量级的回收工作。</td>
-</tr>
-<tr>
-<td>onRestart()</td>
-<td>表示Activity重新启动，从不可见状态转为可见状态时会被调用。</td>
-</tr>
-<tr>
-<td>onDestroy()</td>
-<td>表示即将被销毁，生命周期的最后一个方法。可以做回收工作和最终的资源释放。</td>
-</tr>
-</tbody>
-</table>
-<h3 id="正常情况的生命周期（1到6）"><a href="#正常情况的生命周期（1到6）" class="headerlink" title="正常情况的生命周期（1到6）"></a>正常情况的生命周期（1到6）</h3><p><img src="https://i.imgur.com/dahDt3n.png" alt="生命周期一"></p>
-<h4 id="过程1（onCreate-、onStart-、onResume-）"><a href="#过程1（onCreate-、onStart-、onResume-）" class="headerlink" title="过程1（onCreate()、onStart()、onResume()）"></a>过程1（onCreate()、onStart()、onResume()）</h4><p>启动app，此时调用onCreate()、onStart()、onResume()，第一个Activity就处于运行状态。<br><img src="https://i.imgur.com/8xwokB5.png" alt="过程1"></p>
-<h4 id="过程2（onPause-）"><a href="#过程2（onPause-）" class="headerlink" title="过程2（onPause()）"></a>过程2（onPause()）</h4><p>启动第二个Activity，第一个Activity处于暂停状态。调用onPause()<br><img src="https://i.imgur.com/pNSg1jW.png" alt="过程2"></p>
-<h4 id="过程3（onStop-）"><a href="#过程3（onStop-）" class="headerlink" title="过程3（onStop()）"></a>过程3（onStop()）</h4><p>启动第三个Activity，此时第一个Activity处于停止状态。调用第一个Activity的onStop()。<br><img src="https://i.imgur.com/Q8LK9rY.png" alt="过程3"></p>
-<h4 id="过程4（onDestroy-）"><a href="#过程4（onDestroy-）" class="headerlink" title="过程4（onDestroy()）"></a>过程4（onDestroy()）</h4><p>点击退出按钮，退出app。调用onDestroy()来销毁Activity。<br><img src="https://i.imgur.com/Ee6YjLG.png" alt="过程4"></p>
-<p><img src="https://img-blog.csdnimg.cn/20190118090855961.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NvZGVybWVp,size_16,color_FFFFFF,t_70" alt="生命周期（二）"></p>
-<h4 id="过程5（onResume-）"><a href="#过程5（onResume-）" class="headerlink" title="过程5（onResume()）"></a>过程5（onResume()）</h4><p>从第二个Activity回退到第一个Activity。调用onResume()。<br><img src="https://img-blog.csdnimg.cn/20190118091828736.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NvZGVybWVp,size_16,color_FFFFFF,t_70" alt="过程5示例"></p>
-<h4 id="过程6（onRestart-、onStart-）"><a href="#过程6（onRestart-、onStart-）" class="headerlink" title="过程6（onRestart()、onStart()）"></a>过程6（onRestart()、onStart()）</h4><p>从第三个Activity回退到第二个Activity，onRestart()、onStart()；再回退到第一个Activity。调用onResume()。<br><img src="https://img-blog.csdnimg.cn/20190118093302438.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NvZGVybWVp,size_16,color_FFFFFF,t_70" alt="过程6示例"></p>
-<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><ol>
-<li><p>综上现象、调用onResume()后、Activity处于运行状态(可见、可交互)；<br>调用onPause()后、Activity处于暂停状态(可见、不可交互)；<br>调用onStop()后、Activity处于停止状态(不可见、不可交互)；<br>调用onDestroy()后、Activity被销毁。</p>
-</li>
-<li><p>从整个生命来说、onCreate()和onDestroy()是一对儿、表示Activity的创建和销毁。<br>onStart()和onStop()是一对儿、表示Activity是否可见。<br>onResum()和onPause()是一对儿、表示Activity是否可交互。</p>
-</li>
-<li><p>状态交互图<br><img src="https://img-blog.csdnimg.cn/20190121142138517.png" alt="状态交互图"></p>
-</li>
-</ol>
-<h3 id="异常情况的生命周期（7、8）"><a href="#异常情况的生命周期（7、8）" class="headerlink" title="异常情况的生命周期（7、8）"></a>异常情况的生命周期（7、8）</h3><p>当优先级高的Activity需要内存时，系统会销毁优先级较低的Activity(可能是暂停状态（走过程7）、可能是停止状态（走过程8）的Activity)。<br>当用户再次使用该Activity时，会重新创建它。</p>
-<table>
-<thead>
-<tr>
-<th>Activity优先级</th>
-<th>Activity状态</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>高</td>
-<td>运行状态</td>
-</tr>
-<tr>
-<td>中</td>
-<td>暂停状态</td>
-</tr>
-<tr>
-<td>低</td>
-<td>停止状态</td>
-</tr>
-</tbody>
-</table>
-<p><img src="https://img-blog.csdnimg.cn/2019011814310411.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NvZGVybWVp,size_16,color_FFFFFF,t_70" alt="生命周期三"></p>
-<h2 id="六、启动Activity"><a href="#六、启动Activity" class="headerlink" title="六、启动Activity"></a>六、启动Activity</h2><p>从FirstActivity跳转到SecondActivity：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Intent intent = <span class="keyword">new</span> Intent(FirstActivity.<span class="keyword">this</span>, SecondActivity.class);</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
-<h2 id="七、任务栈（back-stack）"><a href="#七、任务栈（back-stack）" class="headerlink" title="七、任务栈（back stack）"></a>七、任务栈（back stack）</h2><ul>
-<li>Android系统是通过任务栈来管理Activity的。</li>
-<li>当一个Activity启动时，会把它压入到该任务栈中。</li>
-<li><p>当用户按返回键、或者结束掉该Activity时，它会从该任务栈中弹出。</p>
-</li>
-<li><p>先进后出的原则<br><img src="https://img-blog.csdnimg.cn/20190118143614915.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NvZGVybWVp,size_16,color_FFFFFF,t_70" alt="Activity进栈出栈"></p>
-</li>
-<li>除了点击退出按钮退出任务栈外，还可以通过finish()方法来结束Activity。<br>例1：设置一个关闭按钮，在监听事件中调用finish()方法。则此按钮可以关闭当前Activity<br>例2：在第二个Activity的onStop()方法中调用finish()方法。则，启动第三个Activity时，第二个Activity会退出任务栈中（如下图）。<br><img src="https://img-blog.csdnimg.cn/2019011814401459.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NvZGVybWVp,size_16,color_FFFFFF,t_70" alt="用finish出栈"></li>
-</ul>
-<h2 id="八、启动模式"><a href="#八、启动模式" class="headerlink" title="八、启动模式"></a>八、启动模式</h2><h3 id="方式一（静态）"><a href="#方式一（静态）" class="headerlink" title="方式一（静态）"></a>方式一（静态）</h3><p>在AndroidManifest.xml的Activity标签中设置启动模式<br>例：android:launchMode=”singleTask”</p>
-<table>
-<thead>
-<tr>
-<th>启动模式</th>
-<th>概念</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>standard(默认)</td>
-<td>使用这种启动模式启动Activity时，每次都会创建一个新的实例放进任务栈中。</td>
-</tr>
-<tr>
-<td>singleTop</td>
-<td>检测栈顶是不是要启动的Activity，如果是，则不创建新的实例；如果不是，则创建新的Activity。</td>
-</tr>
-<tr>
-<td>singleTask</td>
-<td>检测整个任务栈中是否存在Activity，如果存在则置于栈顶，并将该Activity以上的Activity都销毁。</td>
-</tr>
-<tr>
-<td>singleInstance</td>
-<td>singleInstance的Activity会出现一个新的任务栈中，而且该任务栈只存在一个Activity。</td>
-</tr>
-</tbody>
-</table>
-<p>备注：黑箭头表示打开Activity，蓝箭头表示退出</p>
-<h4 id="standard例"><a href="#standard例" class="headerlink" title="standard例"></a>standard例</h4><p><img src="https://img-blog.csdnimg.cn/20190118144434258.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NvZGVybWVp,size_16,color_FFFFFF,t_70" alt="standard"></p>
-<h4 id="singleTop例"><a href="#singleTop例" class="headerlink" title="singleTop例"></a>singleTop例</h4><p><img src="https://img-blog.csdnimg.cn/20190118144727715.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NvZGVybWVp,size_16,color_FFFFFF,t_70" alt="singleTop"></p>
-<h4 id="singleTask例"><a href="#singleTask例" class="headerlink" title="singleTask例"></a>singleTask例</h4><p><img src="https://img-blog.csdnimg.cn/20190118144801178.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NvZGVybWVp,size_16,color_FFFFFF,t_70" alt="singleTask"></p>
-<h4 id="singleInstance例"><a href="#singleInstance例" class="headerlink" title="singleInstance例"></a>singleInstance例</h4><p><img src="https://img-blog.csdnimg.cn/20190118144831892.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NvZGVybWVp,size_16,color_FFFFFF,t_70" alt="singleInstance"></p>
-<h3 id="方式二（动态）"><a href="#方式二（动态）" class="headerlink" title="方式二（动态）"></a>方式二（动态）</h3><p>使用intent flag启动Activity：<br>intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);</p>
-<table>
-<thead>
-<tr>
-<th>Intent flag</th>
-<th>概念</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>FLAG_ACTIVITY_SINGLE_TOP</td>
-<td>与singleTop效果相同</td>
-</tr>
-<tr>
-<td>FLAG_ACTIVITY_CLEAR_TOP</td>
-<td>与singleTask效果相同</td>
-</tr>
-<tr>
-<td>FLAG_ACTIVITY_NEW_TASK</td>
-<td>使用一个新的任务栈来启动Activity</td>
-</tr>
-<tr>
-<td>FLAG_ACTIVITY_NO_HISTORY</td>
-<td>使用这种模式启动Activity，当该Activity启动其他的Activity后，该Activity就会消失，不会保留在栈中。如1st-&gt;2nd，2nd以这种模式启动3rd，3rd-&gt;4th，则当前栈为1st-&gt;2nd-&gt;4th，不存在第三个Activity</td>
-</tr>
-</tbody>
-</table>
-<h2 id="九、Activity传递数据"><a href="#九、Activity传递数据" class="headerlink" title="九、Activity传递数据"></a>九、Activity传递数据</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//第一个Activity中创建一个intent，用intent封装要传递的数据。</span></span><br><span class="line">Intent intent = <span class="keyword">new</span> Intent(FirstActivity.<span class="keyword">this</span>, SecondActivity.class);</span><br><span class="line">intent.putExtra(<span class="string">"KEY_NAME"</span>,<span class="string">"abc"</span>);</span><br><span class="line">Intent intent = <span class="keyword">new</span> Intent(FirstActivity.<span class="keyword">this</span>, SecondActivity.class);</span><br><span class="line">startActivity(intent); </span><br><span class="line"></span><br><span class="line"><span class="comment">//第二个Activity中获取intent，然后获取intent中封装的数据。</span></span><br><span class="line">Intent intent = getIntent();</span><br><span class="line">String value = intent.getStringExtra(<span class="string">"KEY_NAME"</span>); </span><br><span class="line">Log.d(ACTIVITY_LIFECYCLE, String value = intent.getStringExtra(<span class="string">"KEY_NAME"</span>);</span><br></pre></td></tr></table></figure>
-<h2 id="十、AndroidManifest-xml里配置Activity"><a href="#十、AndroidManifest-xml里配置Activity" class="headerlink" title="十、AndroidManifest.xml里配置Activity"></a>十、AndroidManifest.xml里配置Activity</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--name:包名+类名，也可以写成 name=".FirstActivity" --&gt;</span></span><br><span class="line"><span class="comment">&lt;!--configChanges:屏幕旋转是不会重新执行onCreate方法，而是调用onConfigurationChanged，这个属性经常用--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">"com.example.qmpc_146.activitylifecycle.FirstActivity"</span></span></span><br><span class="line"><span class="tag"><span class="attr">android:configChanges</span>=<span class="string">"keyboardHidden|screenSize|orientation"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!---app启动哪个activity主要取决于Intent-filter中的action数据类型，类型为.MAIN表示该程序的入口</span></span><br><span class="line"><span class="comment">Activity,每个Activity都可以有intent-filter--&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.MAIN"</span> /&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.LAUNCHER"</span> /&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!---第二个Activity，每个Activity都必须在AndroidManifest.xml里注册--&gt;</span></span><br><span class="line"><span class="comment">&lt;!---该Activity以dialog形式显示--&gt;</span></span><br><span class="line"><span class="comment">&lt;!---显示在Activity左上角的名称--&gt;</span></span><br><span class="line"><span class="comment">&lt;!---禁止旋转，保持屏幕始终是竖屏--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".SecondActivity"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">android:theme</span>=<span class="string">"@android:style/Theme.Dialog"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">android:label</span>=<span class="string">"my activity dialog"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">android:screenOrientation</span>=<span class="string">"landscape"</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br><span class="line"></span><br><span class="line"> <span class="comment">&lt;!---第三个Activity--&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".ThirdActivity"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="十一、几个Activity的方法说明"><a href="#十一、几个Activity的方法说明" class="headerlink" title="十一、几个Activity的方法说明"></a>十一、几个Activity的方法说明</h2><table>
-<thead>
-<tr>
-<th>常用方法</th>
-<th>用法</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>startActivity</td>
-<td>启动Activity</td>
-</tr>
-<tr>
-<td>finish()</td>
-<td>关闭Activity</td>
-</tr>
-<tr>
-<td>onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState)</td>
-<td>在onStop之前一定会被调用，用来保存瞬时数据</td>
-</tr>
-<tr>
-<td>onRestoreInstanceState(Bundle savedInstanceState, PersistableBundle persistentState)</td>
-<td>恢复瞬时数据</td>
-</tr>
-<tr>
-<td>startActivityForResult(Intent intent, int requestCode)</td>
-<td>启动Activity并请求其返回结果</td>
-</tr>
-<tr>
-<td>setResult (int resultCode, Intent data)</td>
-<td>设置返回结果</td>
-</tr>
-<tr>
-<td>onActivityResult(int requestCode, int resultCode, Intent data)</td>
-<td>结果返回</td>
-</tr>
-</tbody>
-</table>
-
-          
+          一、概念Activity是与用户交互的接口。是四大组件之一。它是一个容器，不绘制任何东西，只负责组织将要被绘制的组件。通俗地讲就是用户界面。
+二、Activity写法一个Activity是一个类，该类要继承android.app.Activity。
+三、Activity启动基本流程
+启动一个app时
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/12/安卓开发笔记：Activity/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1101,176 +712,46 @@
       
         
           
-            <h1 id="coder梅：读书进度"><a href="#coder梅：读书进度" class="headerlink" title="coder梅：读书进度"></a>coder梅：读书进度</h1><h2 id="git和github"><a href="#git和github" class="headerlink" title="git和github"></a>git和github</h2><table>
-<thead>
-<tr>
-<th>书名</th>
-<th>进度</th>
-<th>总结</th>
-<th>最后阅读时间</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>尚硅谷 Git&amp;Github</td>
-<td>100% 共62节</td>
-<td>可作为字典复看，内容很精炼</td>
-<td>2019/3/11</td>
-</tr>
-</tbody>
-</table>
-<h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><table>
-<thead>
-<tr>
-<th>书名</th>
-<th>进度</th>
-<th>总结</th>
-<th>最后阅读时间</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>《大话设计模式》程杰 著</td>
-<td>第26章</td>
-<td>每章的加粗字体可复看</td>
-<td>2019/3/6</td>
-</tr>
-</tbody>
-</table>
-<h2 id="安卓书籍"><a href="#安卓书籍" class="headerlink" title="安卓书籍"></a>安卓书籍</h2><table>
-<thead>
-<tr>
-<th>书名</th>
-<th>进度</th>
-<th>总结</th>
-<th>最后阅读时间</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>《android studio实战 快速、高效地构建android应用》 Adam Gerber 著 靳晓辉 译</td>
-<td>1、2、3、4章</td>
-<td>第2、3、4章不错：讲android studio常用技巧，很实用，可复读。</td>
-<td>2019/1/24</td>
-</tr>
-<tr>
-<td>《Android编程权威指南》 Bill Phillips Chris Stewart Kristin Marsicano著 王明发 译</td>
-<td>9、10章</td>
-<td>可复读</td>
-<td>2018/4/9</td>
-</tr>
-<tr>
-<td>《Android群英传》 徐宜生 著</td>
-<td>第1、2章</td>
-<td>可复读：第1章</td>
-<td>2019/2/21</td>
-</tr>
-</tbody>
-</table>
-<h2 id="安卓视频"><a href="#安卓视频" class="headerlink" title="安卓视频"></a>安卓视频</h2><table>
-<thead>
-<tr>
-<th>书名</th>
-<th>进度</th>
-<th>总结</th>
-<th>最后阅读时间</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>geek视频</td>
-<td>3阶段：1.0-4、1.14、2.16-20、5.45、4.2-4、4.14-15、4阶段：8</td>
-<td>无需复看</td>
-<td>2019/2/15</td>
-</tr>
-<tr>
-<td>mars视频</td>
-<td>1季完、重置版1季完、第2季：1、3</td>
-<td>无需复看</td>
-<td>2019/2/20</td>
-</tr>
-<tr>
-<td>阳光沙滩Activity视频教程</td>
-<td>1-3、6-12、18-25</td>
-<td>无需复看</td>
-<td>2018/4/20</td>
-</tr>
-<tr>
-<td>育知同创视频</td>
-<td>59-66</td>
-<td>无需复看</td>
-<td>2018/4/24</td>
-</tr>
-</tbody>
-</table>
-<h2 id="产品书籍"><a href="#产品书籍" class="headerlink" title="产品书籍"></a>产品书籍</h2><table>
-<thead>
-<tr>
-<th>书名</th>
-<th>进度</th>
-<th>总结</th>
-<th>最后阅读时间</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>《人人都是产品经理》 苏杰 著</td>
-<td>42页</td>
-<td>可复读</td>
-<td>2019/3/1</td>
-</tr>
-</tbody>
-</table>
-<h2 id="人工智能视频"><a href="#人工智能视频" class="headerlink" title="人工智能视频"></a>人工智能视频</h2><table>
-<thead>
-<tr>
-<th>书名</th>
-<th>进度</th>
-<th>总结</th>
-<th>最后阅读时间</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>万门大学 你知道的人工智能 你不知道的python</td>
-<td>100% 共7节</td>
-<td>无需复看</td>
-<td>2019/2/21</td>
-</tr>
-<tr>
-<td>万门大学 深度学习和神经网络</td>
-<td>1.1-16 共9节</td>
-<td>大部分内容看不懂、但无需复看</td>
-<td>2019/2/27</td>
-</tr>
-<tr>
-<td>万门大学 让神经网络听懂故事</td>
-<td>1.1-5 共11节</td>
-<td>-</td>
-<td>2019/3/6</td>
-</tr>
-</tbody>
-</table>
-<h2 id="系统分析师"><a href="#系统分析师" class="headerlink" title="系统分析师"></a>系统分析师</h2><table>
-<thead>
-<tr>
-<th>书名</th>
-<th>进度</th>
-<th>总结</th>
-<th>最后阅读时间</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>希赛 系统分析师</td>
-<td>1-2 共10节</td>
-<td>-</td>
-<td>2019/3/7</td>
-</tr>
-</tbody>
-</table>
+          coder梅：读书进度git和github
 
-          
+
+书名
+进度
+总结
+最后阅读时间
+
+
+
+
+尚硅谷 Git&amp;Github
+100% 共62节
+可作为字典复看，内容很精炼
+2019/3/11
+
+
+
+设计模式
+
+
+书名
+进度
+总结
+最后阅读时间
+
+
+
+
+《大话设计模式》程杰 著
+第26章
+每章的加粗
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/12/读书进度/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1388,17 +869,15 @@
       
         
           
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
+          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/12/hello-world/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
