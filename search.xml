@@ -1,6 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[GoogleMock笔记：如何等待异步事件]]></title>
+    <url>%2F2019%2F03%2F18%2FGoogleMock%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%A6%82%E4%BD%95%E7%AD%89%E5%BE%85%E5%BC%82%E6%AD%A5%E4%BA%8B%E4%BB%B6%2F</url>
+    <content type="text"><![CDATA[问题描述当源代码是异步时，如何写mock？ 代码实现12345678910111213141516171819202122232425public: virtual BOOL Wait( enum WAITINFO info, const U_LONG msec = 10000 );private: NWaitObject m_Wait;BOOL _stub_ClassA::Wait( enum WAITINFO inf, const U_LONG msec)&#123; BOOL ret = FALSE; ret = m_Wait.Wait(msec); if (FALSE == ret)&#123; return FALSE; &#125; if ( inf != m_Wait.GetInfo())&#123;return FALSE; &#125; return TRUE;&#125;enum WAITINFO&#123; WAITINFO_A = 0&#125;;void _stub_MethodA::MethodB()&#123; m_Wait.Notify(WAITINFO_A);&#125;if ( true == m_ClassA-&gt;Wait(WAITINFO_A) ) &#123;…… &#125;]]></content>
+      <categories>
+        <category>GoogleMock</category>
+      </categories>
+      <tags>
+        <tag>GoogleMock</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[GoogleMock笔记：既想Mock又想调用自定义函数]]></title>
+    <url>%2F2019%2F03%2F18%2FGoogleMock%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%97%A2%E6%83%B3Mock%E5%8F%88%E6%83%B3%E8%B0%83%E7%94%A8%E8%87%AA%E5%AE%9A%E4%B9%89%E5%87%BD%E6%95%B0%2F</url>
+    <content type="text"><![CDATA[问题描述既想Mock又想调用自定义函数。 代码实现当源码调用了MethodA时，既可以期望MethodA，也可以调用自定义的Myself_MethodA逻辑123456789Mock_ClassA() &#123; ON_CALL(*this, MethodA(_)) .WillByDefault(Invoke(this, &amp;Mock_Class::Myself_MethodA)); &#125;; MOCK_METHOD1( MethodA, void( int par ) ); void Myself_MethodA ( int par )&#123; …… &#125; EXPECT_CALL(*(m_ClassA), MethodA(_)) .Times(1);]]></content>
+      <categories>
+        <category>GoogleMock</category>
+      </categories>
+      <tags>
+        <tag>GoogleMock</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[GoogleMock笔记：Feature的格式]]></title>
+    <url>%2F2019%2F03%2F18%2FGoogleMock%E7%AC%94%E8%AE%B0%EF%BC%9AFeature%E7%9A%84%E6%A0%BC%E5%BC%8F%2F</url>
+    <content type="text"><![CDATA[Feature：名称，生成后作为类名及文件名。Background：每个测试case执行前都会执行Background下的内容。Scenario：测试case的名称。Given：前期准备。When：当执行某个命令时。Then：执行When后的结果。And：并列，可接到Given、When、Then后。@guid-：唯一的id，不可重复。|格数|：表头。作为参数生成。|1 |：值。作为参数值生成。 例：123456789101112131415161718192021222324252627282930313233343536Feature: Bowling game作为玩家，为了了解自己的成绩，想看的投球和记分情况。@guid-2da57f00-eb8d-4759-bdd3-ea11a6ec689e#No.1Scenario: Roll first time玩家第一次投球。 When 击倒1个球瓶 Then 通知界面如下信息 |格数|第一次击倒数|第二次击倒数|格数分| |1 |1 | | |@guid-12288b38-c3c4-4cf8-9664-f2cdec0520e7#No.2 Scenario: Roll twice玩家第二次投球。 Given 击倒1个球瓶 When 击倒4个球瓶 Then 通知界面如下信息 |格数|第一次击倒数|第二次击倒数|格数分| |1 |1 |4 |5 |@guid-91290c33-a3e0-491a-a653-f5edc1377757#No.3Scenario: Spare frame without next roll玩家补中后，还没有投球。 When 击倒4个球瓶 And 击倒6个球瓶 Then 通知界面如下信息 |格数|第一次击倒数|第二次击倒数|格数分| |1 |4 |6 | |]]></content>
+      <categories>
+        <category>GoogleMock</category>
+      </categories>
+      <tags>
+        <tag>GoogleMock</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[GoogleMock笔记：GoogleMock测试工程文件目录结构]]></title>
+    <url>%2F2019%2F03%2F18%2FGoogleMock%E7%AC%94%E8%AE%B0%EF%BC%9AGoogleMock%E6%B5%8B%E8%AF%95%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%2F</url>
+    <content type="text"><![CDATA[文件夹 作用 External 源代码的外部接口。 Mock 存放Mock文件，Mock源代码的外部接口，也就是External里的文件。mock开头文件。 Stub 桩文件，为源代码的内部代码做桩用。stub开头文件。 SUT 放源代码。 TestCaseModel 放测试代码用的共通类，如GherkinTable.h、FeatureTestModel.h、FeatureStepModel.h等 TestCode 有TestDSL文件夹、Feature文件夹。放···Feature.cpp、···Steps.cpp/h、。···TestModel.h/cpp测试代码。 Feature 放.Feature文件。 TestDSL 放···TestModel.h/cpp与源码之间交互的文件。]]></content>
+      <categories>
+        <category>GoogleMock</category>
+      </categories>
+      <tags>
+        <tag>GoogleMock</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[GoogleMock笔记：Mock非虚函数]]></title>
+    <url>%2F2019%2F03%2F18%2FGoogleMock%E7%AC%94%E8%AE%B0%EF%BC%9AMock%E9%9D%9E%E8%99%9A%E5%87%BD%E6%95%B0%2F</url>
+    <content type="text"><![CDATA[问题描述想要Mock接口，接口必须是虚函数。如果想要Mock的接口都是非虚函数，怎么办呢？ 如：想MockMethodA12345class ClassA&#123;public: void MethodA();&#125; 解决方案添加一个适配器，让该适配器的方法直接调用MethodA()。然后Mock适配器的方法。 代码实现12345678910class ClassA_Adapter&#123;private: ClassA m_ClassA;public: virtual void MethodA() &#123; m_ClassA.MethodA(); &#125;&#125; 12345class MockClassA : public ClassA_Adapter&#123;public: MOCK_METHOD0(MethodA, void());&#125;;]]></content>
+      <categories>
+        <category>GoogleMock</category>
+      </categories>
+      <tags>
+        <tag>GoogleMock</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[GoogleMock笔记：测试函数无法使用private和protected成员]]></title>
+    <url>%2F2019%2F03%2F18%2FGoogleMock%E7%AC%94%E8%AE%B0%EF%BC%9A%E8%A7%A3%E6%B5%8B%E8%AF%95%E5%87%BD%E6%95%B0%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8private%E5%92%8Cprotected%E6%88%90%E5%91%98%20-%20%E3%82%B3%E3%83%94%E3%83%BC%2F</url>
+    <content type="text"><![CDATA[问题描述ClassA友元ClassATest，但ClassATest里的测试类不能访问ClassA里的private和protected的成员或方法。 解决方案ClassATest可以访问ClassA中的private和protected，所以在ClassATest里追加方法去访问private或protected。而测试类(TEST_F())里再调用ClassATest追加的方法。 代码实现123456class ClassA&#123;friend public ClassATest private: int MethodA();&#125; 1234567class ClassATest&#123;private: ClassA m_ClassA;protected: int MethodA()&#123; return m_ClassA.MethodA(); &#125;//调用ClassA里的MethodA()&#125; 1234TEST_F( ClassATest, MethodATest )&#123; int ret = MethodA();//调用ClassATest里的MethodA()&#125;]]></content>
+      <categories>
+        <category>GoogleMock</category>
+      </categories>
+      <tags>
+        <tag>GoogleMock</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[GoogleMock笔记：解决期望在动作之前执行的问题]]></title>
+    <url>%2F2019%2F03%2F18%2FGoogleMock%E7%AC%94%E8%AE%B0%EF%BC%9A%E8%A7%A3%E5%86%B3%E6%9C%9F%E6%9C%9B%E5%9C%A8%E5%8A%A8%E4%BD%9C%E4%B9%8B%E5%89%8D%E6%89%A7%E8%A1%8C%E7%9A%84%E9%97%AE%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[问题描述在Google Mock中，期望是在动作之前执行的。所以我们在测试过程中，会发现因为动作还没有做，就执行了期望，导致产生NG项。 解决方案 把期望加到Expectation List中，把动作加到Action List中。 在执行用例时，先调用Expectation List里的期望，再调用Action List里的动作。 代码实现12345void TestModel::MethodA()&#123; ActionTemplate&lt;TestModel&gt;* p_action_cmd = new ActionTemplate&lt;TestModel&gt; (this,&amp;TestModel:: MethodA_Action); AddAction((ITestAction*)p_action_cmd);// 动作加到Action List&#125; 1234void TestModel::MethodA_Action()&#123; m_pRealClass-&gt;MethodA();&#125; 12345void TestModel::MethodB()&#123; ActionTemplate&lt; TestModel&gt;* p_expectation_cmd = new ActionTemplate&lt; TestModel&gt; (this,&amp; TestModel:: MethodB_Expectation); AddExpectation((ITestAction*)p_expectation_cmd);// 动作加到Expectation List&#125; 12void TestModel::MethodB_Expectation()&#123; //期望 EXPECT_CALL()…… &#125; 12345678void Execute()&#123; Execute(s_ExpectationList); //先执行期望MethodB_Expectation () Execute(s_ActionList);// 再执行动作MethodA_Action() IndirectFunctionCaller::Instance()-&gt;DoCallBacks(); VerifyExpectationsOfAllModels(); Clear();&#125;]]></content>
+      <categories>
+        <category>GoogleMock</category>
+      </categories>
+      <tags>
+        <tag>GoogleMock</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Google Mock笔记：GoogleMock高级语法]]></title>
+    <url>%2F2019%2F03%2F18%2FGoogleMock%E7%AC%94%E8%AE%B0%EF%BC%9AGoogleMock%E9%AB%98%E7%BA%A7%E8%AF%AD%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[摘要本文主要记载Google Mock进阶学习知识点，讲述Google Mock的高级语法，以及在进行Google Mock中常见的问题。基础知识点请参照博主的另一篇文章GoogleMock笔记：GoogleMock基础语法。 Mock函数权限Mock函数定义为public，这样做是为了让ON_CALL和EXPECT_CALL可以从Mock类外引用Mock函数。 Mock重载函数和Mock其他函数一样。注意：如果你并不Mock所有的重载函数，编译器会警告你基类中的一些函数被隐藏了。修正的方法是用using将它们引入域中： 1234567class MockFoo : public Foo &#123; ... using Foo::Add; MOCK_METHOD1(Add, int(Element x)); // 我们不想mock另一个重载函数int Add(int times, Element x); ... &#125;; Mock模板类在MOCK_*宏后加上_T。1234567template &lt;typename Elem&gt; class StackInterface &#123; ... virtual ~StackInterface(); virtual int GetSize() const = 0; virtual void Push(const Elem&amp; x) = 0; &#125;; 123456template &lt;typename Elem&gt; class MockStack : public StackInterface&lt;Elem&gt; &#123; ... MOCK_CONST_METHOD0_T(GetSize, int()); MOCK_METHOD1_T(Push, void(const Elem&amp; x)); &#125;; Mock非虚函数第一种方法：添加一个中间类，请参照GoogleMock笔记：Mock非虚函数第二种方法：使用模板。在正式代码中，用ConcretePacketStream来实例化，在测试中你用MockPacketStream来实例化123template &lt;class PacketStream&gt; void CreateConnection(PacketStream* stream)&#123; ... &#125; 12345template &lt;class PacketStream&gt; class PacketReader &#123; public: void ReadPackets(PacketStream* stream, size_t packet_num); &#125;; 在正式代码中使用CreateConnection()和PacketReader，在测试代码中使用CreateConnection和PacketReader：123MockPacketStream mock_stream; EXPECT_CALL(mock_stream, ...)...; PacketReader&lt;MockPacketStream&gt; reader(&amp;mock_stream); 两个方法都需要修改正式代码。 调用没有被期望的Mock函数 如果一个没有指定EXPECT_CALL的Mock函数被调用了，Google Mock会打印一个”uninteresting call”警告。用NiceMock重写测试 12345using ::testing::NiceMock; TEST(...) &#123; NiceMock&lt;MockFoo&gt; mock_foo; EXPECT_CALL(mock_foo, DoThis()); &#125; NiceMock是MockFoo的一个子类，所以它在任何接受MockFoo类型的地方使用。在MockFoo的构造函数是有参数的时候也是可以用的，因为NiceMock“继承”了MockFoo的构造函数。 1234using ::testing::NiceMock; TEST(...) &#123; NiceMock&lt;MockFoo&gt; mock_foo(5, "hi"); EXPECT_CALL(mock_foo, DoThis()); &#125; 当希望把”uninteresting call”这些警告当成错误时，可以用StickMock。 12345using ::testing::StrictMock; TEST(...) &#123; StrictMock&lt;MockFoo&gt; mock_foo; EXPECT_CALL(mock_foo, DoThis()); &#125; 被Mock函数参数列表很长12345678class LogSink &#123; public: ... virtual void send(LogSeverity severity, const char* full_filename, const char* base_filename, int line, const struct tm* tm_time, const char* message, size_t message_len) = 0; &#125;; 12345678910111213class ScopedMockLog : public LogSink &#123; public: ... virtual void send(LogSeverity severity, const char* full_filename, const char* base_filename, int line, const tm* tm_time, const char* message, size_t message_len) &#123; Log(severity, full_filename, std::string(message, message_len)); &#125; //只Mock三个参数。 MOCK_METHOD3(Log, void(LogSeverity severity, const string&amp; file_path, const string&amp; message)); &#125;; 为了使用Mock，如何设计正式代码经常会发现你正在用一些没有针对接口实现的类。为了可以用这种类( 且称为Concrete类 )来测试自己的代码，可能会试着将Concrete的函数变为虚函数，然后再去Mock它。不要这么做，取而代之的是，并不直接调用Concrete类，而是定义一个接口去调用Concrete类。然后在Concrete类之上实现这个接口，即配接器。 已经用Fake实现的接口想要Mock这个接口，比如想在它上面设置期望。但是还想用FakeFoo作为Mock类函数的默认行为12345678910class Foo &#123; public: virtual char DoThis(int n) = 0; &#125;; class FakeFoo : public Foo &#123; public: virtual char DoThis(int n) &#123; return (n &gt; 0) ? '+' : (n &lt; 0) ? '-' : '0'; &#125;&#125;; 123456789class MockFoo : public Foo &#123; public: MOCK_METHOD1(DoThis, char(int n)); void DelegateToFake() &#123; ON_CALL(*this, DoThis(_)) .WillByDefault(Invoke(&amp;fake_, &amp;FakeFoo::DoThis)); &#125; private: FakeFoo fake_; &#125;; Fack和Mock搅在一起不好，该设计仅用于重构上。 使用被Mock既存逻辑想期望又想调用真实的代码逻辑12345678910using ::testing::_; using ::testing::AtLeast; using ::testing::Invoke; class MockFoo : public Foo &#123; public: MockFoo() &#123; ON_CALL(*this, DoThis()) .WillByDefault(Invoke(&amp;real_, &amp;Foo::DoThis)); //调用真实的代码。 ... &#125; 12345MOCK_METHOD0(DoThis, ...); ... private: Foo real_; &#125;; 1234... MockFoo mock; EXPECT_CALL(mock, DoThis()) .Times(3); 有时想期望，有时想调用真实代码123456class MockFoo : public Foo &#123; public: MOCK_METHOD1(Pure, void(int n)); MOCK_METHOD1(Concrete, int(const char* str)); //调用Mock。 int FooConcrete(const char* str) &#123; return Foo::Concrete(str); &#125; //调用真实的代码。&#125;; 12345using ::testing::_; using ::testing::Invoke; ... EXPECT_CALL(foo, Concrete(_)) .WillOnce(Invoke(&amp;foo, &amp;MockFoo::FooConcrete)); 函数期望的参数大于等于12using ::testing::Ge; EXPECT_CALL(foo, DoThis(Ge(5))); 不为空12using ::testing::NotNull; EXPECT_CALL(foo, DoThat("Hello", NotNull())); 任何参数12using ::testing::_; EXPECT_CALL(foo, DoThat(_); 与、或、非1234567using ::testing::AllOf; using ::testing::Gt;using ::testing::HasSubstr; using ::testing::Ne; using ::testing::Not;EXPECT_CALL(foo, DoThis(AllOf(Gt(5), Ne(10)))); //&gt; 5 and != 10 EXPECT_CALL(foo, DoThat(Not(HasSubstr("blah")), NULL)); //不包含sub-string "blah". 类型转换1234class MockFoo : public Foo &#123; public: MOCK_METHOD1(DoThis, void(Derived* derived)); &#125;; 12using ::testing::SafeMatcherCast; EXPECT_CALL(foo, DoThis(SafeMatcherCast&lt;Derived*&gt;(m))); 使用SafeMatcherCast或MatcherCast，SafeMatcherCast比较严格，两个函数的区别是如果static_cast可以将T类型转换成类型U，那么MatcherCast就可以转换 重载函数非const GetBar()12EXPECT_CALL(foo, GetBar()).WillOnce(ReturnRef(bar1)); const GetBar()12EXPECT_CALL(Const(foo), GetBar()).WillOnce(ReturnRef(bar2)); 新规则覆盖老规则老规则1EXPECT_CALL(foo, DoThis(_)) .WillRepeatedly(Return('b')); 新规则1EXPECT_CALL(foo, DoThis(Lt(5))) .WillRepeatedly(Return('a')); 上记代码结果，如果foo.DoThis()被调用时参数值小于5，就会返回’a’，否则返回’b’ 参数匹配123456using ::testing::_; using ::testing::Lt; using ::testing::Ne; ... EXPECT_CALL(foo, InRange(Ne(0), _)) //第一个参数非0。.With(Lt()); //或者.With(AllArgs(Lt())) //第一个参数比第二个参数小。 1234567using ::testing::_; using ::testing::AllOf; using ::testing::Args; using ::testing::Lt; ... EXPECT_CALL(foo, Blah(_, _, _)) .With(AllOf(Args&lt;0, 1&gt;(Lt()), Args&lt;1, 2&gt;(Lt()))); //多个参数比较。 参数传递如果你想将这些参数传递给你自己的Predicate( 比如.With(0, 1)(Truly(&amp;MyPredicate)))，你的必须以tr1::tuple做为它的参数。Google Mock会将n个选中的参数作为单个tuple传递给Predicate。 Google Mock中的断言（Matchers）123456#include &lt;algorithm&gt; #include &lt;vector&gt; std::vector&lt;int&gt; v; ... // 在v中，多少元素 &gt;= 10? const int count = count_if(v.begin(), v.end(), Matches(Ge(10))); 满足 &gt;=0，&lt;=100，!=501Matches(AllOf(Ge(0), Le(100), Ne(50))) Matchers使用EXPECT_THAT、ASSERT_THAT12345678910#include "gmock/gmock.h" using ::testing::AllOf; using ::testing::Ge; using ::testing::Le; using ::testing::MatchesRegex; using ::testing::StartsWith; ... EXPECT_THAT(Foo(), StartsWith("Hello")); //Foo()返回一个以”Hello”开头的字符串。EXPECT_THAT(Bar(), MatchesRegex("Line \\d+")); //Bar()返回一个匹配”Line \\d+”的正则表达式。ASSERT_THAT(Baz(), AllOf(Ge(5), Le(10))); //Baz()返回一个在[5, 10]区间内的数字。 将自定义函数返回值传递给期望函数作为参数12345using ::testing::Truly;int IsEven(int n)&#123; return (n % 2) == 0 ? 1 : 0; &#125; ... // Bar()必须以even number形式被调用. EXPECT_CALL(foo, Bar(Truly(IsEven))); 上记代码含义：期望Bar被调用时，参数是偶数。 被期望函数的参数做比较12345using ::testing::Eq;using ::testing::ByRef;using ::testing::Lt; ...EXPECT_CALL(mock_obj, Foo(Eq(ByRef(bar)))); 调用Foo()时，期望参数和bar相等。 1EXPECT_CALL(mock_obj, Foo(Lt(ByRef(bar)))); 调用Foo()时，期望参数小于bar。 打印错误信息1GTEST_NONFATAL_FAILURE_("error message"); 参考书籍：《Google C++ Mocking Framework for Dummies》]]></content>
+      <categories>
+        <category>GoogleMock</category>
+      </categories>
+      <tags>
+        <tag>GoogleMock</tag>
+        <tag>C++测试</tag>
+        <tag>测试</tag>
+        <tag>BDD测试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Google Mock笔记：GoogleMock基础语法]]></title>
+    <url>%2F2019%2F03%2F18%2FGoogleMock%E7%AC%94%E8%AE%B0%EF%BC%9AGoogleMock%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[摘要本文主要记载什么情况下使用Google Mock、为什么要使用Google Mock，及Google C++ Mocking语言的最基本使用方法。高级语法请参照博主的另一篇文章GoogleMock笔记：GoogleMock高级语法。 概述Google Mock可以使你检查它不使用它的代码之间的交互。 基本使用规则 使用简单的宏描述你想Mock的接口。（可以理解为其他模块的接口。） 创建Mock对象，指定Mock对象的期望和行为。 用Mock对象测试代码。 使用库gtest/gtest.h、gmock/gmock.h 如何定义 自定义Mock类继承要Mock的类。 要Mock的接口必须是虚函数，否则使用模板Mock非虚函数，或加一个适配类(请参照GoogleMock笔记：Mock非虚函数)。 Mock一个接口的语法：MOCK_METHODn(接口名称, 接口返回类型(参数列表))，n是有几个参数的意思。如果是const函数，用MOCK_CONST_METHODn。例： 12345678#include "gmock/gmock.h" class MockTurtle : public Turtle &#123; public: ... MOCK_METHOD0(PenUp, void()); MOCK_METHOD2(GoTo, void(int x, int y)); MOCK_CONST_METHOD0(GetX, int()); &#125;; 技巧：如果定义工作量太大，可以在scripts/generator目录下找到一个gmock_gen.py工具，这个命令行工具需要安装Python 2.4。将C++文件名和抽象类名作为参数传入这个工具，它会打印Mock类的定义。 如何写测试用例123456789101112#include "path/to/mock-turtle.h" //Mock类#include "gmock/gmock.h" #include "gtest/gtest.h" using ::testing::AtLeast; //使用命名空间TEST(PainterTest, CanDrawSomething) &#123; //给该用例起个名字 MockTurtle turtle; EXPECT_CALL(turtle, PenDown()) //期望PenDown至少被调用一次 .Times(AtLeast(1)); Painter painter(&amp;turtle); //期望DrawCircle以参数0,0,10被调用一次，当调用DrawCircle时返回True。 EXPECT_TRUE(painter.DrawCircle(0, 0, 10)); &#125; Google Mock可以使用在任何测试框架中如果你用的是其他测试框架，如cppunit，只需要把main函数改成下面这样： 12345int main(int argc, char** argv) &#123; ::testing::GTEST_FLAG(throw_on_failure) = true; ::testing::InitGoogleMock(&amp;argc, argv); ... &#125; EXPECT_CALL()宏语法1234567using ::testing::Return;... EXPECT_CALL(turtle, GetX()) .Times(5) .WillOnce(Return(100)) .WillOnce(Return(150)) .WillRepeatedly(Return(200)); 上记语法的含义是：期望对象turtle中，GetX()被调用5次。第一次调用时，返回100；第二次调用时，返回150；第三次之后调用都返回200。 GoogleMock使用宏的原因：第一，它让期望更容易被认出来( 无论是grep还是人去阅读 )，第二，它允许Google Mock可以得到失败期望在源文件的位置，仍而使Debug更容易。 期望参数 当一个Mock函数需要带参数时，我们必须指定我们期望的参数的是什么： 1EXPECT_CALL(turtle, Forward(100)); //期望调用Forward时，参数为100 参数定义为任意： 123using ::testing::_; ... EXPECT_CALL(turtle, Forward(_ )); //期望调用Forward，参数任意。 一个内置的matchers可以在CheatSheet中找到，比如，下面是Ge( greater than or equal ) matcher的应用。 123using ::testing::Ge;... EXPECT_CALL(turtle, Forward(Ge(100))); //期望调用Forward，参数比100大。 期望被调用次数 期望GetX没有被调用： 12EXPECT_CALL(turtle, GetX()) .Times(0); 期望GetX被调用1次 12EXPECT_CALL(turtle, GetX()) .Times(1); 期望GetX至少被调用两次： 12EXPECT_CALL(turtle, GetX()) .Times(AtLeast(2)); 期望GetX被调用任意次数： 12EXPECT_CALL(turtle, GetX()) .Times(AnyNumber()); 期望GetX被调用1次，并以返回值为100返回： 12EXPECT_CALL(turtle, GetX()) .WillOnce(Return(100)); 期望GetX被重复调用，不论次数，并以返回值为100返回： 12EXPECT_CALL(turtle, GetX()) .WillRepeatedly(Return(100)); 如果Mock函数的返回类型是一个指针或是内置类型，那这个函数是有默认行为的( 一个void函数直接返回，bool函数返回false，其它函数返回0)。 我们在WillOnce()里除了写Return()还可以用ReturnRef( variable )，或是调用一个预先定义好的函数。 期望调用规则默认情况下，当一个Mock函数被调用时，Google Mock会通过定义顺序的逆序去查找期望，当找到一个与参数匹配的有效的期望时就停下来( 可以把这个它想成是“老的規则覆盖新的規则“ )。 期望匹配顺序默认情况下，即使是在前一个期望没有被匹配的情况下，一个期望仍然可以被匹配。换句话说，调用的匹配顺序不会按照期望指定的顺序去匹配。1234567891011using ::testing::InSequence;... TEST(FooTest, DrawsLineSegment) &#123; ... &#123; InSequence dummy; //期望调用都以一个严格的顺序来匹配。 EXPECT_CALL(turtle, PenDown()); EXPECT_CALL(turtle, Forward(100)); EXPECT_CALL(turtle, PenUp()); &#125; &#125; 创建InSequence的一个对象后，在这个对象作用域中的期望都会以顺序存放，并要求调用以这个顺序匹配。 期望是Sticky的turtle.GetX()返回10, 20, 30,…1234567891011using ::testing::InSequence;using ::testing::Return;... &#123; InSequence s; for (int i = 1; i &lt;= n; i++) &#123; EXPECT_CALL(turtle, GetX()) .WillOnce(Return(10*i)) .RetiresOnSaturation(); &#125; &#125; 参考书籍：《Google C++ Mocking Framework for Dummies》]]></content>
+      <categories>
+        <category>GoogleMock</category>
+      </categories>
+      <tags>
+        <tag>GoogleMock</tag>
+        <tag>C++测试</tag>
+        <tag>测试</tag>
+        <tag>BDD测试</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[开发者网站]]></title>
     <url>%2F2019%2F03%2F15%2F%E5%BC%80%E5%8F%91%E8%80%85%E7%BD%91%E7%AB%99%2F</url>
     <content type="text"><![CDATA[此文件主要记载开发者能用到的网站，分享给需要的人，博主持续更新中… 安卓 安卓开发者官方网站：https://developer.android.google.cn Android Studio下载地址：https://developer.android.google.cn/studio/ 第三方免费Android模拟器Genymotion：https://www.genymotion.com/ Android Studio尚未包含的设备创建AVD需要的技术规格：https://www.phonearena.com/ 安卓API Demo下载地址：https://android.googlesource.com/platform/development.git/+/master/samples/ApiDemos/ 安卓源代码网站：http://androidxref.com/ 镜像网站，汇集了很多资源：https://www.androiddevtools.cn/ Java JDK下载地址：https://www.oracle.com/technetwork/java/javase/downloads/index.html 版本控制 Git下载地址：http://git-scm.com/downloads GitHub官网：http://github.com GitHub各种语言下，上传忽略的文件样例：http://github.com/github/gitignore Git教程：http://iissnan.com/progit/ 编码规范 阿里巴巴开发文档下载地址：https://edu.aliyun.com/certification/cldt04 博客搭建 （博客框架）Hexo官网：https://hexo.io/zh-cn/ （Hexo主题）NexT官网：https://theme-next.iissnan.com/getting-started.html （GitHub+Hexo+Next）博主搭建的个人博客：https://coder-mei.github.io/ （图标）Font Awesome官网：http://www.fontawesome.com.cn/ 其他 https://sh.gg/]]></content>

@@ -98,25 +98,25 @@
 
 
 
-  <meta name="description" content="table th:nth-of-type(1){ width: 30%; } table th:nth-of-type(2){ width: 20% ; } table th:nth-of-type(3){ width: 10%; } table th:nth-of-type(4){ width: 30%; } table th:nth-of-type(5){ width: 10%; }">
-<meta name="keywords" content="coder梅">
-<meta property="og:type" content="website">
-<meta property="og:title" content="读书进度">
-<meta property="og:url" content="http://yoursite.com/read/index.html">
+  <meta name="description" content="问题描述当源代码是异步时，如何写mock？ 代码实现12345678910111213141516171819202122232425public:	virtual BOOL Wait( enum WAITINFO info, const U_LONG msec = 10000 );private:	NWaitObject m_Wait;BOOL _stub_ClassA::Wait( enum">
+<meta name="keywords" content="GoogleMock">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GoogleMock笔记：如何等待异步事件">
+<meta property="og:url" content="http://yoursite.com/2019/03/18/GoogleMock笔记：如何等待异步事件/index.html">
 <meta property="og:site_name" content="Coder梅的个人博客">
-<meta property="og:description" content="table th:nth-of-type(1){ width: 30%; } table th:nth-of-type(2){ width: 20% ; } table th:nth-of-type(3){ width: 10%; } table th:nth-of-type(4){ width: 30%; } table th:nth-of-type(5){ width: 10%; }">
+<meta property="og:description" content="问题描述当源代码是异步时，如何写mock？ 代码实现12345678910111213141516171819202122232425public:	virtual BOOL Wait( enum WAITINFO info, const U_LONG msec = 10000 );private:	NWaitObject m_Wait;BOOL _stub_ClassA::Wait( enum">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-15T08:44:25.844Z">
+<meta property="og:updated_time" content="2019-03-18T04:57:00.098Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="读书进度">
-<meta name="twitter:description" content="table th:nth-of-type(1){ width: 30%; } table th:nth-of-type(2){ width: 20% ; } table th:nth-of-type(3){ width: 10%; } table th:nth-of-type(4){ width: 30%; } table th:nth-of-type(5){ width: 10%; }">
+<meta name="twitter:title" content="GoogleMock笔记：如何等待异步事件">
+<meta name="twitter:description" content="问题描述当源代码是异步时，如何写mock？ 代码实现12345678910111213141516171819202122232425public:	virtual BOOL Wait( enum WAITINFO info, const U_LONG msec = 10000 );private:	NWaitObject m_Wait;BOOL _stub_ClassA::Wait( enum">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/read/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/18/GoogleMock笔记：如何等待异步事件/">
 
 
 
@@ -126,7 +126,7 @@
   };
 </script>
 
-  <title>读书进度 | Coder梅的个人博客</title>
+  <title>GoogleMock笔记：如何等待异步事件 | Coder梅的个人博客</title>
   
 
 
@@ -302,7 +302,7 @@
         
         
           
-          <li class="menu-item menu-item-read menu-item-active">
+          <li class="menu-item menu-item-read">
 
     
     
@@ -372,34 +372,6 @@
   
     
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
   
 
   
@@ -456,305 +428,237 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/18/GoogleMock笔记：如何等待异步事件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder梅">
+      <meta itemprop="description" content="学无止境">
+      <meta itemprop="image" content="/images/codermei.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder梅的个人博客">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-<h1 class="post-title" itemprop="name headline">读书进度
-
-</h1>
-
-<div class="post-meta">
-  
-  
-
-
-
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <style>
-table th:nth-of-type(1){
-width: 30%;
-}
-table th:nth-of-type(2){
-width: 20%
-;
-}
-table th:nth-of-type(3){
-width: 10%;
-}
-table th:nth-of-type(4){
-width: 30%;
-}
-table th:nth-of-type(5){
-width: 10%;
-}
-</style>
+          <h1 class="post-title" itemprop="name headline">GoogleMock笔记：如何等待异步事件
 
-<hr>
-<h2 id="git和github"><a href="#git和github" class="headerlink" title="git和github"></a>git和github</h2><table>
-<thead>
-<tr>
-<th style="text-align:center">书名</th>
-<th style="text-align:center">进度</th>
-<th style="text-align:center">总计</th>
-<th style="text-align:center">总结</th>
-<th style="text-align:center">最后阅读时间</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">尚硅谷 Git&amp;Github</td>
-<td style="text-align:center">100%</td>
-<td style="text-align:center">62节</td>
-<td style="text-align:center">可作为字典复看，内容很精炼</td>
-<td style="text-align:center">2019/3/11</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><table>
-<thead>
-<tr>
-<th style="text-align:center">书名</th>
-<th style="text-align:center">进度</th>
-<th style="text-align:center">总计</th>
-<th style="text-align:center">总结</th>
-<th style="text-align:center">最后阅读时间</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">《大话设计模式》程杰著</td>
-<td style="text-align:center">第26章</td>
-<td style="text-align:center">368页</td>
-<td style="text-align:center">每章的加粗字体可复看</td>
-<td style="text-align:center">2019/3/6</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h2 id="安卓"><a href="#安卓" class="headerlink" title="安卓"></a>安卓</h2><table>
-<thead>
-<tr>
-<th style="text-align:center">书名</th>
-<th style="text-align:center">进度</th>
-<th style="text-align:center">总计</th>
-<th style="text-align:center">总结</th>
-<th style="text-align:center">最后阅读时间</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">《android studio实战 快速、高效地构建android应用》Adam Gerber著 靳晓辉译</td>
-<td style="text-align:center">1、2、3、4章</td>
-<td style="text-align:center">380页</td>
-<td style="text-align:center">第2、3、4章可复读</td>
-<td style="text-align:center">2019/1/24</td>
-</tr>
-<tr>
-<td style="text-align:center">《Android编程权威指南 第3版》Bill Phillips著 王明发译</td>
-<td style="text-align:center">9、10章</td>
-<td style="text-align:center">576页</td>
-<td style="text-align:center">可复读</td>
-<td style="text-align:center">2018/4/9</td>
-</tr>
-<tr>
-<td style="text-align:center">《Android群英传》徐宜生著</td>
-<td style="text-align:center">第1、2章</td>
-<td style="text-align:center">342页</td>
-<td style="text-align:center">可复读：第1章</td>
-<td style="text-align:center">2019/2/21</td>
-</tr>
-<tr>
-<td style="text-align:center">geek视频</td>
-<td style="text-align:center">3阶：1.0-4、1.14、2.16-20、5.45、4.2-4、4.14-15、4阶：8</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">无需复看</td>
-<td style="text-align:center">2019/2/15</td>
-</tr>
-<tr>
-<td style="text-align:center">mars视频</td>
-<td style="text-align:center">1季完、重置版1季完、第2季：1、3</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">无需复看</td>
-<td style="text-align:center">2019/2/20</td>
-</tr>
-<tr>
-<td style="text-align:center">阳光沙滩Activity视频教程</td>
-<td style="text-align:center">1-3、6-12、18-25</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">无需复看</td>
-<td style="text-align:center">2018/4/20</td>
-</tr>
-<tr>
-<td style="text-align:center">育知同创视频</td>
-<td style="text-align:center">59-66</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">无需复看</td>
-<td style="text-align:center">2018/4/24</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h2 id="产品"><a href="#产品" class="headerlink" title="产品"></a>产品</h2><table>
-<thead>
-<tr>
-<th style="text-align:center">书名</th>
-<th style="text-align:center">进度</th>
-<th style="text-align:center">总计</th>
-<th style="text-align:center">总结</th>
-<th style="text-align:center">最后阅读时间</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">《人人都是产品经理》 苏杰 著</td>
-<td style="text-align:center">42页</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">可复读</td>
-<td style="text-align:center">2019/3/1</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h2 id="人工智能视频"><a href="#人工智能视频" class="headerlink" title="人工智能视频"></a>人工智能视频</h2><table>
-<thead>
-<tr>
-<th style="text-align:center">书名</th>
-<th style="text-align:center">进度</th>
-<th style="text-align:center">总计</th>
-<th style="text-align:center">总结</th>
-<th style="text-align:center">最后阅读时间</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">万门大学 你知道的人工智能 你不知道的python</td>
-<td style="text-align:center">100%</td>
-<td style="text-align:center">7节</td>
-<td style="text-align:center">无需复看</td>
-<td style="text-align:center">2019/2/21</td>
-</tr>
-<tr>
-<td style="text-align:center">万门大学 深度学习和神经网络</td>
-<td style="text-align:center">100%</td>
-<td style="text-align:center">9节</td>
-<td style="text-align:center">大部分内容看不懂、但无需复看</td>
-<td style="text-align:center">2019/2/27</td>
-</tr>
-<tr>
-<td style="text-align:center">万门大学 让神经网络听懂故事</td>
-<td style="text-align:center">1.1-6</td>
-<td style="text-align:center">11节</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">2019/3/6</td>
-</tr>
-<tr>
-<td style="text-align:center">万门大学 让神经网络看懂图像</td>
-<td style="text-align:center">1.1-6</td>
-<td style="text-align:center">11节</td>
-<td style="text-align:center">可复看</td>
-<td style="text-align:center">2019/3/15</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h2 id="系统分析师"><a href="#系统分析师" class="headerlink" title="系统分析师"></a>系统分析师</h2><table>
-<thead>
-<tr>
-<th style="text-align:center">书名</th>
-<th style="text-align:center">进度</th>
-<th style="text-align:center">总计</th>
-<th style="text-align:center">总结</th>
-<th style="text-align:center">最后阅读时间</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">希赛 系统分析师</td>
-<td style="text-align:center">1-2 共10节</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">2019/3/7</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><table>
-<thead>
-<tr>
-<th style="text-align:center">书名</th>
-<th style="text-align:center">进度</th>
-<th style="text-align:center">总计</th>
-<th style="text-align:center">总结</th>
-<th style="text-align:center">最后阅读时间</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">《Google C++ Mocking Framework for Dummies-Chinese》</td>
-<td style="text-align:center">100%</td>
-<td style="text-align:center">14页</td>
-<td style="text-align:center">2017/7/7</td>
-</tr>
-<tr>
-<td style="text-align:center">《Google C++ Mocking Cookbook-Chinese》</td>
-<td style="text-align:center">20页</td>
-<td style="text-align:center">63页</td>
-<td style="text-align:center">2017/7/7</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><table>
-<thead>
-<tr>
-<th style="text-align:center">书名</th>
-<th style="text-align:center">进度</th>
-<th style="text-align:center">总计</th>
-<th style="text-align:center">总结</th>
-<th style="text-align:center">最后阅读时间</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">《鸟哥的Linux私房菜 基础学习篇(第三版)》</td>
-<td style="text-align:center">252页</td>
-<td style="text-align:center">940页</td>
-<td style="text-align:center">2017/10/9</td>
-</tr>
-<tr>
-<td style="text-align:center">《Linux程序设计》</td>
-<td style="text-align:center">39页</td>
-<td style="text-align:center">663页</td>
-<td style="text-align:center">2017/10/9</td>
-</tr>
-</tbody>
-</table>
-
+              
+            
+          </h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-18 12:56:58 / 修改时间：12:57:00" itemprop="dateCreated datePublished" datetime="2019-03-18T12:56:58+08:00">2019-03-18</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/GoogleMock/" itemprop="url" rel="index"><span itemprop="name">GoogleMock</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>当源代码是异步时，如何写mock？</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> BOOL <span class="title">Wait</span><span class="params">( <span class="keyword">enum</span> WAITINFO info, <span class="keyword">const</span> U_LONG msec = <span class="number">10000</span> )</span></span>;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	NWaitObject m_Wait;</span><br><span class="line"></span><br><span class="line">BOOL _stub_ClassA::Wait( <span class="keyword">enum</span> WAITINFO inf, <span class="keyword">const</span> U_LONG msec)</span><br><span class="line">&#123;</span><br><span class="line">	BOOL ret = FALSE;</span><br><span class="line">	ret = m_Wait.Wait(msec);</span><br><span class="line">	<span class="keyword">if</span> (FALSE == ret)&#123; <span class="keyword">return</span> FALSE; &#125;</span><br><span class="line">	<span class="keyword">if</span> ( inf != m_Wait.GetInfo())&#123;<span class="keyword">return</span> FALSE; &#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> TRUE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">enum</span> WAITINFO</span><br><span class="line">&#123;</span><br><span class="line">	WAITINFO_A = <span class="number">0</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">void</span> _stub_MethodA::MethodB()</span><br><span class="line">&#123;</span><br><span class="line">	m_Wait.Notify(WAITINFO_A);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> ( <span class="literal">true</span> == m_ClassA-&gt;Wait(WAITINFO_A) ) &#123;……	&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
+
     
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById(&quot;QR&quot;); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Coder梅 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        
 
 
 
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Coder梅</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
     
+    <a href="http://yoursite.com/2019/03/18/GoogleMock笔记：如何等待异步事件/" title="GoogleMock笔记：如何等待异步事件">http://yoursite.com/2019/03/18/GoogleMock笔记：如何等待异步事件/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
     
-    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/GoogleMock/" rel="tag"># GoogleMock</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/18/GoogleMock笔记：既想Mock又想调用自定义函数/" rel="next" title="GoogleMock笔记：既想Mock又想调用自定义函数">
+                <i class="fa fa-chevron-left"></i> GoogleMock笔记：既想Mock又想调用自定义函数
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
   </div>
 
 
@@ -943,7 +847,7 @@ width: 10%;
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#git和github"><span class="nav-number">1.</span> <span class="nav-text">git和github</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设计模式"><span class="nav-number">2.</span> <span class="nav-text">设计模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安卓"><span class="nav-number">3.</span> <span class="nav-text">安卓</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#产品"><span class="nav-number">4.</span> <span class="nav-text">产品</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#人工智能视频"><span class="nav-number">5.</span> <span class="nav-text">人工智能视频</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统分析师"><span class="nav-number">6.</span> <span class="nav-text">系统分析师</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试"><span class="nav-number">7.</span> <span class="nav-text">测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux"><span class="nav-number">8.</span> <span class="nav-text">Linux</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题描述"><span class="nav-number">1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码实现"><span class="nav-number">2.</span> <span class="nav-text">代码实现</span></a></li></ol></div>
             
 
           </div>
