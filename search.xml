@@ -1,6 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[设计模式笔记：知识体系结构]]></title>
+    <url>%2F2019%2F03%2F19%2F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%2F</url>
+    <content type="text"><![CDATA[创建型 单例模式 Singleton Pattern 原型模式 Prototype 建造者模式 Builder 工厂方法模式 Factory Method 抽象工厂 Abstract Factory 结构型 代理模式 Proxy Pattern 外观模式 Facade Pattern 适配器模式 Adapter Pattern 装饰模式 Decorator Pattern 组合模式 Composite Pattern 享元模式 Proxy Pattern 桥接模式 Bridge Pattern 行为型 模板方法 Template Method 命令模式 Command Pattern 迭代器模式 Iterator Pattern 观察者模式 Observer Pattern 解释器模式 Interpreter Pattern 中介者模式 Mediator Pattern 职责链模式 Chain of Responsibility Pattern 备忘录模式 Memento Pattern 策略模式 Strategy Pattern 访问者模式 Visitor Pattern 状态模式 State Pattern Null Object模式 Null Object Pattern MonoState模式 MonoState Pattern 五星：完全掌握，没有可再学习的内容。四星：熟练掌握，可以游刃有余的使用，剩余不常见知识点没深究。三星：基本掌握，核心知识点已掌握，在项目中使用已没有问题。二星：简单掌握，学习过核心知识点，在项目中使用过两三次，还有部分内容仍需要学习。一星：知道什么场景使用，只使用过一次。]]></content>
+      <categories>
+        <category>设计模式</category>
+      </categories>
+      <tags>
+        <tag>知识体系结构</tag>
+        <tag>设计模式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[安卓开发笔记：知识体系结构]]></title>
+    <url>%2F2019%2F03%2F19%2F%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%2F</url>
+    <content type="text"><![CDATA[基础知识 java基础 数据结构 面向对象思想 Android Studio快捷键（四星） Android Studio使用技巧 Android SDK Activity（四星） Service（二星） BroadcastReceiver（二星） ContentProvider ActionBar Fragment（四星） 数据持久化 SharedPreferences（三星） Sqlite SQLiteOpenHelper ContentProvider File Internal Storage Extermal Storage UILayout FrameLayout LinearLayout TableLayout GridLayout RelativeLayout DrawerLayout SlidingPaneLayout TabLayout ConstraintLayout Widgets TextView Button RadioButton CheckBox Switch ToggleButton ImageButton ImageView ProgressBar（一星） SeekBar（一星） RatingBar（一星） Spinner WebView Containers RadioGroup ListView GridView ExpandableListView ScrollView TabHost SlidingDrawer Gallery VideoView DialerFilter RecyclerView CardView Date&amp;Time AnalogClock（一星） Chronometer DatePicker（一星） TimePicker（一星） CalendarView Expert Space CheckedTextView QuickContactBadge ExtractEditText AutoCompleteTextView MultiAutoCompleteText NumberPicker ZoomButton ZoomController GestureOverlayView SurfaceView TexttureView StackView ViewStub ViewAnimator ViewFlipper ViewSwitcher ImageSwitcher TextSwitcher AdapterViewFlipper ViewPager include fragment requestFocus Custom View 继承原生控件（四星） 组合控件（四星） 继承View（三星） anim TweenAnimation FrameAnimation ValueAnimator ObjectAnimator AnimatorSet Resource AssetManager anim animator color drawable interpolator layout menu raw values xml OpenGL OpenGL 通信 Http Socket Bluetooth NFC Headset USB 性能 布局层次结构 抽象布局使用 HierarchyViewer Lint工具 OOM ANR Heap adb shell TraceView Dalvik日志 logcat MAT 电量优化 流量优化 调试 Logcat adb HierarchyViewer TraceView Heap Lint 适配 OS Version Screen Size Screen px 测试 Monkey MonkeyRunner JUnit Robotium Appium Athrun(TMTS) UIAutomator 安全 服务器安全 通信安全 数据加密 数据验签 代码混淆 webview/JS安全调用 MD5、DES、RSA、https、证书、权限 NDK JNI C语言 C++ 手机功能 电话 短/彩信 Camera Audio SD卡 感应器 第三方扩展 地图 语音识别 支付 统计分析 广告 其他 Intent AndroidManifest AIDL wifi 国际化 PopuWindow 五星：完全掌握，没有可再学习的内容。四星：熟练掌握，可以游刃有余的使用，剩余不常见知识点没深究。三星：基本掌握，核心知识点已掌握，在项目中使用已没有问题。二星：简单掌握，学习过核心知识点，在项目中使用过两三次，还有部分内容仍需要学习。一星：知道什么场景使用，只使用过一次。]]></content>
+      <categories>
+        <category>安卓开发</category>
+      </categories>
+      <tags>
+        <tag>安卓开发</tag>
+        <tag>知识体系结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[AndroidStudio笔记：快捷键及编码技巧]]></title>
+    <url>%2F2019%2F03%2F19%2FAndroidStudio%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%8F%8A%E7%BC%96%E7%A0%81%E6%8A%80%E5%B7%A7%2F</url>
+    <content type="text"><![CDATA[摘要本文集中记载了AndroidStudio快捷键及编码技巧，博主会持续更新。另外，我还制作了一个屏保，可设置为桌面或AndroidStudio背景，以备记忆。 窗口 Project窗口 Alt + 1 | Cmd + 1 Favorites窗口 Alt + 2 | Cmd + 2 Find窗口 Alt + 3 | Cmd + 3 Run窗口 Alt + 4 | Cmd + 4 Debug窗口 Alt + 5 | Cmd + 5 Logcat窗口 Alt + 6 | Cmd + 6 Structure窗口 Alt + 7 | Cmd + 7 Version Control窗口 Alt + 9 | Cmd + 9 Terminal窗口 Alt + 9 | Cmd + 9 继承窗口 Ctrl + H | Ctrl + H 显示大纲 Ctrl + F12 显示VCS Operations Alt + ~ 显示常用窗口 Alt + F1 | Alt + F1 编辑窗口最大化 Ctrl + Shift + F12 并排显示两个编辑器窗口 编辑器选项卡-&gt;右键-&gt;Split Vertically/Split Horizontally 注释 行注释 Ctrl + / | Cmd + / 块注释 Ctrl + Shift + / | Cmd + Alt+ / TODO注释 todo FIX注释 fixme 展开 Ctrl + + | Cmd + + 折叠 Ctrl + - | Cmd + - 全部展开 Ctrl + Shift + + | Cmd + Shift + + 全部折叠 Ctrl + Shift + - | Cmd + Shift + - 代码补全 快速修复 Alt + Enter 插入动态模板 Ctrl + J | Cmd + J 插入surround动态模板 Ctrl + Alt + J | Cmd + Alt + J 设置动态模板 File -&gt; Setting -&gt; Editor -&gt; Live Templates 代码补全 Ctrl + Space | Ctrl + Space SmartType代码补全 Ctrl + Shift + Space | Ctrl + Shift + Space 使用文档用过的单次进行代码补全 Alt + / | Alt + / 使用文档用过的单次进行（向下）代码补全 Alt + Shift + / | Alt + Shift + ? 插入嵌套 Ctrl + Alt + T | Cmd + Alt + T 向上插入一行 Ctrl + Alt + Enter 向下插入一行 Shift + Enter 增加成员方法 Alt + Insert | Cmd + N 重写 Ctrl + O 实现接口方法 Ctrl + I 编辑 撤销 Ctrl + Z | Cmd + Z 重做 Ctrl + Shift + Z 大小写转换 Ctrl + Shift + U 选中 选中单词 Ctrl + W | Alt + 上箭头 向上/下移动选中行 Ctrl + Shift + 上/下箭头 | Cmd + Shift + 上/下箭头 向上/下移动选中行、忽略语法 Alt + Shift + 上/下箭头 | Alt + Shift + 上/下箭头 多行选中 Alt + 鼠标左键 复制粘贴 快速复制 Ctrl + D 复制绝对路径 Ctrl + Shift + C | Cmd + Shift + C 复制相对路径/方法变量的逻辑引用 Ctrl + Alt + Shift + C | Cmd + Alt + Shift + C 粘贴堆栈里的剪贴板 Ctrl + Shift + V | Cmd + Shift + V 删除 删除当前行 Ctrl + Y 删除未使用的导入 Ctrl + Alt + O | Cmd + Alt + O 删除嵌套 Ctrl + Shift + Delete | Cmd + Shift + Delete 跳转 编辑器选项卡切换 Alt + 左/右 | Ctrl + 左/右 跳转至上一次编辑之处 Ctrl + Shift + Backspace | Cmd + Shift + Backspace 跳转至声明 Ctrl + B（鼠标左键） | Cmd + B（鼠标左键） 跳转行号 Ctrl + G | Cmd + L 倒退/前进 Ctrl + Alt + 左/右 上一个/下一个函数 Alt + 上/下 括号匹配 Ctrl + [/] 浏览最近操作过的文件 Ctrl + E 定位错误 F2 重构 格式化文档 Ctrl + Alt + L | Cmd + Alt + L 设置格式化内容 Ctrl + Alt + Shift + L | Cmd + Alt + Shift + L 抽取方法 Ctrl + Alt + M 抽取参数 Ctrl + Alt + P | Cmd + Alt + P 抽取变量 Ctrl + Alt + V | Cmd + Alt + V 抽取常量 Ctrl + Alt + C | Cmd + Alt + C 抽取字段/局部变量转全局变量 Ctrl + Alt + F | Cmd + Alt + F 重命名 Shift + F6 重构方法参数/返回值 Ctrl + F6 | Cmd + F6 重构参数类型 Ctrl + Shift + F6 | Cmd + Shift + F6 代理代替继承 选中文件 -&gt; 右键 -&gt; Refactor -&gt; Replace Inheritance with Delegation 移动成员到其他类 F6 子类/父类成员上拉/下推 选中文件 -&gt; 右键 -&gt; Refactor -&gt; Pull Members Up/Push Members Down 调试 调试程序 Shift + F9 运行程序 Shift + F10 追加断点 Ctrl + F8 进入函数 F7 单步执行 F8 跳出函数 Shift + F8 继续执行 F9 书签 追加/删除书签 F11 追加带标记书签 Ctrl + F11 显示全部书签 Shift + F11 将文件添加到收藏 选中文件-&gt;右键-&gt;Add to Favorites 查找 查看关联文件 Ctrl + Alt+ Home | Alt + Cmd + 上箭头 类内查找 Ctrl + F 全局查找 Ctrl + Shift + F 类内替换 Ctrl + R 全局替换 Ctrl + Shift + R 查找文件 Ctrl + Shift + N | Cmd + Shift + O 查找类 Ctrl + N | Cmd + O 查找调用 Alt + F7 获取帮助 Ctrl + Shift + A | Cmd + Shift + A 设置 输入代码时，不区分大小写也能弹出代码提示 File -&gt; Settings -&gt; Editor -&gt; General -&gt; Code Completion -&gt; Case sensitive completion选择none]]></content>
+      <categories>
+        <category>AndroidStudio</category>
+      </categories>
+      <tags>
+        <tag>AndroidStudio</tag>
+        <tag>安卓开发</tag>
+        <tag>快捷键</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[AndroidStudio笔记：AndroidStudio快捷键屏保]]></title>
+    <url>%2F2019%2F03%2F19%2FAndroidStudio%E7%AC%94%E8%AE%B0%EF%BC%9AAndroidStudio%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%B1%8F%E4%BF%9D%2F</url>
+    <content type="text"><![CDATA[摘要本文集中记载了AndroidStudio快捷键及编码技巧的图片，鼠标右键点保存，即可保存到本地。可设置为桌面或AndroidStudio工具背景，以备记忆。文字版博文请参照AndroidStudio笔记：快捷键及编码技巧。 尺寸：1024*768]]></content>
+      <categories>
+        <category>AndroidStudio</category>
+      </categories>
+      <tags>
+        <tag>AndroidStudio</tag>
+        <tag>安卓开发</tag>
+        <tag>快捷键</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[GoogleMock笔记：如何等待异步事件]]></title>
     <url>%2F2019%2F03%2F18%2FGoogleMock%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%A6%82%E4%BD%95%E7%AD%89%E5%BE%85%E5%BC%82%E6%AD%A5%E4%BA%8B%E4%BB%B6%2F</url>
     <content type="text"><![CDATA[问题描述当源代码是异步时，如何写mock？ 代码实现12345678910111213141516171819202122232425public: virtual BOOL Wait( enum WAITINFO info, const U_LONG msec = 10000 );private: NWaitObject m_Wait;BOOL _stub_ClassA::Wait( enum WAITINFO inf, const U_LONG msec)&#123; BOOL ret = FALSE; ret = m_Wait.Wait(msec); if (FALSE == ret)&#123; return FALSE; &#125; if ( inf != m_Wait.GetInfo())&#123;return FALSE; &#125; return TRUE;&#125;enum WAITINFO&#123; WAITINFO_A = 0&#125;;void _stub_MethodA::MethodB()&#123; m_Wait.Notify(WAITINFO_A);&#125;if ( true == m_ClassA-&gt;Wait(WAITINFO_A) ) &#123;…… &#125;]]></content>
