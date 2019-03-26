@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Git笔记：Git基础知识]]></title>
+    <url>%2F2019%2F03%2F26%2FGit%E7%AC%94%E8%AE%B0%EF%BC%9AGit%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%2F</url>
+    <content type="text"><![CDATA[GitGit是一个版本控制工具。 Git和SVN对比版本控制工具还有SVN。 SVN属于集中式版本控制，Git属于分布式版本控制。 Git与相比SVN，Git可以在本地提交版本记录，而SVN只能将版本提交到服务器。 托管中心局域网环境下：GitLab服务器外网环境下：如码云（国内）、github 相关网站Git官网：https://git-scm.com/GitHub官网：http://github.com 命令 命令 含义 git init 初始化 git config user.name coder_mei 设置仓库级别的名称 git config user.email codermei@163.com 设置仓库级别邮件 git config –global user.name coder_mei 设置系统级别的名称 git config –global user.email codermei@163.com 设置系统级别邮件 git status 查看状态 git add test.txt 添加文件到缓存 git rm –cached testfile.txt 删除缓存里的文件 git add * 添加所有文件 git commit testfile.txt 提交 git commit -m “second modify” testfile.txt 提交时备注版本信息 git log 查看履历版本 git log –pretty=oneline 查看履历版本（一行显示） git log –oneline 查看履历版本（更简略的一行显示） git reflog 查看所有履历版本（显示步骤值） git reset –hard 51f271a 复原某个版本 git reset –hard HEAD^ 回退一个版本 git reset –hard HEAD~3 回退三个版本 git diff 本地库和缓存区比较 git branch -v 查看分支 git branch testbranch 创建分支testbranch git checkout testbranch 切换分支 git merge testbranch 合并分支到master上，当前在master分支上 git remote -v 查看地址别名 git remote add alias https://github.com/coder-mei/hello-world.git 给地址设置别名 git push alias master 推送本地库到远程库 git clone https://github.com/coder-mei/hello-world.git 克隆远程库到本地 git fetch alias master 把远程库内容下载到本地 git checkout alias/master 切换至远程库的master git merge alias/master 把远程库内容合并到本地 ssh-keygen -t rsa ssh授权（然后将c盘生成的id_rsa.pub里的密钥复制到github上） ssh -T git@github.com 验证ssh授权是否成功（成功显示：Hi username！You’ve successfully…）]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+        <tag>版本控制</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[安卓开发笔记：SharedPrefernces]]></title>
     <url>%2F2019%2F03%2F20%2F%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0%EF%BC%9ASharedPrefernces%2F</url>
     <content type="text"><![CDATA[作用保存瞬时数据，可用于偏好设定的保存。 使用方法 使用SharedPreferences 1private SharedPreferences mSharedPreferences; 获取SharedPreferencesgetSharedPreferences 参数1：文件名，参数2：操作模式。如果文件不存在则会新建一个，文件路径：/data/data/包名/shared_prefs/***.xml 1mSharedPreferences = getSharedPreferences("demo_preferences", MODE_PRIVATE); 保存数据putBoolean 参数1：键名，参数2：键值。 123SharedPreferences.Editor editor = mSharedPreferences.edit();editor.putBoolean("check_box_value", isChecked);editor.apply(); 获取保存的数据getBoolean 参数1：键名，参数2：默认返回值，返回值：键值。 1boolean isChecked = getPreferences(MODE_PRIVATE).getBoolean("check_box_value", false); 全部代码 123456789101112131415161718192021222324252627private SharedPreferences mSharedPreferences;@Overrideprotected void onCreate(Bundle savedInstanceState) &#123; super.onCreate(savedInstanceState); setContentView(R.layout.perferences_activity_main); // 获取SharedPreferences。 mSharedPreferences = getSharedPreferences("demo_preferences", MODE_PRIVATE); CheckBox checkBox = findViewById(R.id.checkBox); checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() &#123; @Override public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) &#123; SharedPreferences.Editor editor = mSharedPreferences.edit(); // 保存数据 editor.putBoolean("check_box_value", isChecked); editor.apply(); &#125; &#125;); if (mSharedPreferences == null) &#123; return; &#125; // 获取保存的数据 boolean isChecked = getPreferences(MODE_PRIVATE).getBoolean("check_box_value", false); checkBox.setChecked(isChecked);&#125; 操作模式 mode 作用 MODE_PRIVATE 默认模式，仅能被当前app访问、或者有相同id的app MODE_WORLD_READABLE 其他的app可读（官方不推荐） MODE_WORLD_WRITEABLE 其他的app可写（官方不推荐） MODE_MULTI_PROCESS 允许多进程访问（官方不推荐）]]></content>
