@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[安卓开发笔记：进度条]]></title>
+    <url>%2F2019%2F03%2F28%2F%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0%EF%BC%9A%E8%BF%9B%E5%BA%A6%E6%9D%A1%2F</url>
+    <content type="text"><![CDATA[ProgressBar作用不可拖动的进度条。 属性 属性 含义 style=”?android:attr/progressBarStyleHorizontal” 进度风格 android:max=”100” 总进度 android:progress=”60” 当前进度 android:secondaryProgress=”80” 第二进度（视频播放通常会有两个进度，下载进度和播放进度） 方法 方法 含义 isIndeterminate() 是否是不定期的进度条？（返回值：没有实时进度返回true，有时是进度返回false） progressBar.incrementProgressBy(10); 当前进度条增加10 progressBar.incrementSecondaryProgressBy(20); 第二进度条增加20 SeekBar作用可拖动的进度条，如视频、音乐播放器中的进度条。SeekBar继承ProgressBar。 方法SeekBar改变触发监听：setOnSeekBarChangeListener 方法 含义 onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) 进度变化，参数3：是否是用户手动退拽的 onStartTrackingTouch 开始拖拽前 onStopTrackingTouch 拖拽后 RatingBar作用评分条，如购物网站里的评价条。SeekBar继承ProgressBar。 属性 属性 含义 android:numStars=”4” 一共显示几颗星 android:stepSize=”0.5” 能前进多少，即可以是0.5颗星、1颗星…3.5颗星、4颗星 方法RatingBar改变的监听setOnRatingBarChangeListener 方法 含义 onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) 评分变化，参数2：分数，参数3：是否是用户手动触发 table th:nth-of-type(1){ width: 50%; } table th:nth-of-type(2){ width: 50%; }]]></content>
+      <categories>
+        <category>安卓开发</category>
+      </categories>
+      <tags>
+        <tag>安卓开发</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[安卓开发笔记：Log]]></title>
+    <url>%2F2019%2F03%2F28%2F%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0%EF%BC%9ALog%2F</url>
+    <content type="text"><![CDATA[android.util.Log 方法 级别 作用 Log.v() verbose 打印最为琐碎的，意义最小的日志信息 Log.d() debug 打印调试信息，这些信息对调试程序和分析问题有帮助。 Log.i() info 打印比较重要的数据，可以帮助分析用户行为。 Log.w() warn 打印警告信息，提示程序在这个地方可能会有潜在的风险。 Log.e() error 打印程序中的错误信息，比如程序进入到了 catch 语句当中。当有错误信息打印出来的时候，一般都代表你的程序出现严重问题了，必须尽快修复。 table th:nth-of-type(1){ width: 10%; } table th:nth-of-type(2){ width: 10%; } table th:nth-of-type(3){ width: 80%; }]]></content>
+      <categories>
+        <category>安卓开发</category>
+      </categories>
+      <tags>
+        <tag>安卓开发</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[安卓开发笔记：ADB]]></title>
+    <url>%2F2019%2F03%2F28%2F%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0%EF%BC%9AADB%2F</url>
+    <content type="text"><![CDATA[概述ADB全称Android Debug Bridge 命令 命令 含义 adb push D:\file.txt /systenm/temp/ 向手机里写入文件 adb pull /system/temp/ D:\file.txt 从手机里获取文件 adb shell logcat &#124; grep “abc” 查看Log adb shell df 查看系统盘符 adb shell pm list packages -f 输出所有已经安装的应用 pm list packages key 查看含有某字段的应用的包名 adb shell input keyevent 3 模拟home键 adb shell input keyevent 4 模拟back键 adb shell input keyevent 19 模拟up键 adb shell input keyevent 20 模拟down键 adb shell input keyevent 21 模拟left键 adb shell input keyevent 22 模拟right键 adb shell input keyevent 66 模拟enter键 adb shell input keyevent 82 模拟menu键 adb shell input touchscreen swipe 18 665 18 350 模拟滑动输入（四个数为x1、y1、x2、y2） adb shell dumpsys activity activities &#124; grep “HelloWorld” 以”HelloWorld”为关键字查看Activity运行状态 pm list packages -f 列出所有的package adb shell screenrecord /sdcard/demo.mp4 录制屏幕（可以用ctrl+c来结束） adb reboot 重启 cat /proc/stat CPU使用情况 dumpsys cpuinfo packagename 各个app的CPU使用情况 cat /proc/meminfo 内存使用情况 dumpsys meminfo packagename 各个app的内存使用情况 cat /proc/uid_stat/uid/tcp_rcv 各个app流量接收数据 cat /proc/uid_stat/uid/tcp_snd 各个app流量发送数据 dumpsys battery 电量信息 ps 进程 top -t 线程 logcat 缓冲日志 dumpsys window 获取手机屏幕分辨率 getprop ro.build.version.release 获取手机系统版本信息 getprop gsm.network.type 获取手机网络类型信息 df 获取手机系统各个分区相关信息 dumpsys power 查看电源管理相关信息 vmstat 周期性地打印出进程运行队列、系统切换、CPU时间占比等情况 service list 查看后台services信息 dumpsys -l 查看当前手机所支持的dump服务 table th:nth-of-type(1){ width: 50%; } table th:nth-of-type(2){ width: 50%; }]]></content>
+      <categories>
+        <category>安卓开发</category>
+      </categories>
+      <tags>
+        <tag>安卓开发</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Git笔记：Git基础知识]]></title>
     <url>%2F2019%2F03%2F26%2FGit%E7%AC%94%E8%AE%B0%EF%BC%9AGit%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%2F</url>
     <content type="text"><![CDATA[GitGit是一个版本控制工具。 Git和SVN对比版本控制工具还有SVN。 SVN属于集中式版本控制，Git属于分布式版本控制。 Git与相比SVN，Git可以在本地提交版本记录，而SVN只能将版本提交到服务器。 托管中心局域网环境下：GitLab服务器外网环境下：如码云（国内）、github 相关网站Git官网：https://git-scm.com/GitHub官网：http://github.com 命令 命令 含义 git init 初始化 git config user.name coder_mei 设置仓库级别的名称 git config user.email codermei@163.com 设置仓库级别邮件 git config –global user.name coder_mei 设置系统级别的名称 git config –global user.email codermei@163.com 设置系统级别邮件 git status 查看状态 git add test.txt 添加文件到缓存 git rm –cached testfile.txt 删除缓存里的文件 git add * 添加所有文件 git commit testfile.txt 提交 git commit -m “second modify” testfile.txt 提交时备注版本信息 git log 查看履历版本 git log –pretty=oneline 查看履历版本（一行显示） git log –oneline 查看履历版本（更简略的一行显示） git reflog 查看所有履历版本（显示步骤值） git reset –hard 51f271a 复原某个版本 git reset –hard HEAD^ 回退一个版本 git reset –hard HEAD~3 回退三个版本 git diff 本地库和缓存区比较 git branch -v 查看分支 git branch testbranch 创建分支testbranch git checkout testbranch 切换分支 git merge testbranch 合并分支到master上，当前在master分支上 git remote -v 查看地址别名 git remote add alias https://github.com/coder-mei/hello-world.git 给地址设置别名 git push alias master 推送本地库到远程库 git clone https://github.com/coder-mei/hello-world.git 克隆远程库到本地 git fetch alias master 把远程库内容下载到本地 git checkout alias/master 切换至远程库的master git merge alias/master 把远程库内容合并到本地 ssh-keygen -t rsa ssh授权（然后将c盘生成的id_rsa.pub里的密钥复制到github上） ssh -T git@github.com 验证ssh授权是否成功（成功显示：Hi username！You’ve successfully…）]]></content>
