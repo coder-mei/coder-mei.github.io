@@ -25,7 +25,7 @@
   <entry>
     <title><![CDATA[安卓开发笔记：ADB]]></title>
     <url>%2F2019%2F03%2F28%2F%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0%EF%BC%9AADB%2F</url>
-    <content type="text"><![CDATA[概述ADB全称Android Debug Bridge 命令 命令 含义 adb push D:\file.txt /systenm/temp/ 向手机里写入文件 adb pull /system/temp/ D:\file.txt 从手机里获取文件 adb shell logcat &#124; grep “abc” 查看Log adb shell df 查看系统盘符 adb shell pm list packages -f 输出所有已经安装的应用 pm list packages key 查看含有某字段的应用的包名 adb shell input keyevent 3 模拟home键 adb shell input keyevent 4 模拟back键 adb shell input keyevent 19 模拟up键 adb shell input keyevent 20 模拟down键 adb shell input keyevent 21 模拟left键 adb shell input keyevent 22 模拟right键 adb shell input keyevent 66 模拟enter键 adb shell input keyevent 82 模拟menu键 adb shell input touchscreen swipe 18 665 18 350 模拟滑动输入（四个数为x1、y1、x2、y2） adb shell dumpsys activity activities &#124; grep “HelloWorld” 以”HelloWorld”为关键字查看Activity运行状态 pm list packages -f 列出所有的package adb shell screenrecord /sdcard/demo.mp4 录制屏幕（可以用ctrl+c来结束） adb reboot 重启 cat /proc/stat CPU使用情况 dumpsys cpuinfo packagename 各个app的CPU使用情况 cat /proc/meminfo 内存使用情况 dumpsys meminfo packagename 各个app的内存使用情况 cat /proc/uid_stat/uid/tcp_rcv 各个app流量接收数据 cat /proc/uid_stat/uid/tcp_snd 各个app流量发送数据 dumpsys battery 电量信息 ps 进程 top -t 线程 logcat 缓冲日志 dumpsys window 获取手机屏幕分辨率 getprop ro.build.version.release 获取手机系统版本信息 getprop gsm.network.type 获取手机网络类型信息 df 获取手机系统各个分区相关信息 dumpsys power 查看电源管理相关信息 vmstat 周期性地打印出进程运行队列、系统切换、CPU时间占比等情况 service list 查看后台services信息 dumpsys -l 查看当前手机所支持的dump服务 table th:nth-of-type(1){ width: 50%; } table th:nth-of-type(2){ width: 50%; }]]></content>
+    <content type="text"><![CDATA[概述ADB全称Android Debug Bridge 命令 命令 含义 adb devices 查看设备 adb -s 设备名称 指定用那个设备 adb start-server 开启adb服务 adb kill-server 停止adb服务，有时服务端口被其他应用占用，需要先停止服务再开启服务 adb connect 192.168.1.8 通过wifi连接安卓设备 adb disconnect 断开连接 adb install apkname.apk 安装apk adb install -r apkname.apk 覆盖安装 adb uninstall com.codermei.apkname 卸载apk adb push D:\file.txt /systenm/temp/ 向手机里写入文件 adb pull /system/temp/ D:\file.txt 从手机里获取文件 adb shell 相当于进入安卓的Linux系统 adb shell input text 123456 可以控制文本框里输入 adb shell input text “https://coder-mei.github.io/&quot; 输入网址、网址要加双引号 adb shell logcat &#124; grep “abc” 查看Log adb shell df 查看系统盘符 adb shell pm list packages -f 输出所有已经安装的应用 adb shell input keyevent 3 模拟home键 adb shell input keyevent 4 模拟back键 adb shell input keyevent 19 模拟up键 adb shell input keyevent 20 模拟down键 adb shell input keyevent 21 模拟left键 adb shell input keyevent 22 模拟right键 adb shell input keyevent 24 模拟音量+ adb shell input keyevent 66 模拟enter键 adb shell input keyevent 82 模拟menu键 adb shell input tab 223 854 点击手机上的某点，坐标x：223 y：851。坐标可以通过截手机图自己测量。 adb shell input swipe 300 1000 300 500 模拟向上滑动，(300,1000)第一个点，(300,500)第二个点。从第一个点滑动到第二个点 adb shell input swipe 300 1000 300 1000 2000 长按(300,1000)这个点持续两秒 adb shell input touchscreen swipe 18 665 18 350 模拟滑动输入（四个数为x1、y1、x2、y2） adb shell dumpsys activity activities &#124; grep “HelloWorld” 以”HelloWorld”为关键字查看Activity运行状态 pm list packages key 查看含有某字段的应用的包名 pm list packages -f 列出所有的package adb shell screenrecord /sdcard/demo.mp4 录制屏幕（可以用ctrl+c来结束） adb reboot 重启 cat /proc/stat CPU使用情况 dumpsys cpuinfo packagename 各个app的CPU使用情况 cat /proc/meminfo 内存使用情况 dumpsys meminfo packagename 各个app的内存使用情况 cat /proc/uid_stat/uid/tcp_rcv 各个app流量接收数据 cat /proc/uid_stat/uid/tcp_snd 各个app流量发送数据 dumpsys battery 电量信息 ps 进程 top -t 线程 logcat 缓冲日志 dumpsys window 获取手机屏幕分辨率 getprop ro.build.version.release 获取手机系统版本信息 getprop gsm.network.type 获取手机网络类型信息 df 获取手机系统各个分区相关信息 dumpsys power 查看电源管理相关信息 vmstat 周期性地打印出进程运行队列、系统切换、CPU时间占比等情况 service list 查看后台services信息 dumpsys -l 查看当前手机所支持的dump服务 table th:nth-of-type(1){ width: 50%; } table th:nth-of-type(2){ width: 50%; }]]></content>
       <categories>
         <category>安卓开发</category>
       </categories>
@@ -64,8 +64,8 @@
         <category>安卓开发</category>
       </categories>
       <tags>
-        <tag>安卓开发</tag>
         <tag>AndroidStudio</tag>
+        <tag>安卓开发</tag>
       </tags>
   </entry>
   <entry>
@@ -76,8 +76,8 @@
         <category>设计模式</category>
       </categories>
       <tags>
-        <tag>知识体系结构</tag>
         <tag>设计模式</tag>
+        <tag>知识体系结构</tag>
       </tags>
   </entry>
   <entry>
@@ -100,8 +100,8 @@
         <category>AndroidStudio</category>
       </categories>
       <tags>
-        <tag>安卓开发</tag>
         <tag>AndroidStudio</tag>
+        <tag>安卓开发</tag>
         <tag>快捷键</tag>
       </tags>
   </entry>
@@ -113,8 +113,8 @@
         <category>AndroidStudio</category>
       </categories>
       <tags>
-        <tag>安卓开发</tag>
         <tag>AndroidStudio</tag>
+        <tag>安卓开发</tag>
         <tag>快捷键</tag>
       </tags>
   </entry>
